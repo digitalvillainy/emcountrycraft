@@ -1,0 +1,33 @@
+##
+description = "Default layout"
+==
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ this.page.meta_title}}</title>
+    <meta name="description" content="{{ this.page.meta_description }}">
+    <meta name="title" content="{{ this.page.meta_title }}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body class="{{ 'page-'~this.page.id }}">
+
+<!-- Header -->
+<header id="layout-header">
+    header element
+</header>
+
+<!--TODO: Add Flash message later-->
+
+<!-- Content -->
+<section id="layout-content">
+    {% page %}
+</section>
+
+<!-- Footer -->
+<footer id="layout-footer">
+    footer
+</footer>
+
+</body>
+</html>
