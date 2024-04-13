@@ -8,24 +8,26 @@ description = "Default layout"
     <meta name="description" content="{{ this.page.meta_description }}">
     <meta name="title" content="{{ this.page.meta_title }}">
     <meta charset="utf-8">
+    <link href="{{ ['assets/output.css']|theme }}" rel="stylesheet">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.8/dist/cdn.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 <body class="{{ 'page-'~this.page.id }}">
 
 <!-- Header -->
-<header id="layout-header">
+<header id="layout-header" class="text-3xl">
     header element
 </header>
 
 <!--TODO: Add Flash message later-->
 
 <!-- Content -->
-<section id="layout-content">
+<section id="layout-content" class="text-green-300 bg-red-700">
     {% page %}
 </section>
 
 <!-- Footer -->
-<footer id="layout-footer">
+<footer id="layout-footer" class="text-7xl">
     footer
 </footer>
 
