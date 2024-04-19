@@ -554,14 +554,20 @@ video {
   --tw-contain-style:  ;
 }
 
-.bg-red-700 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(185 28 28 / var(--tw-bg-opacity));
+.flex {
+  display: flex;
 }
 
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
+.w-full {
+  width: 100%;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
+}
+
+.flex-col {
+  flex-direction: column;
 }
 
 .text-3xl {
@@ -569,12 +575,12 @@ video {
   line-height: 2.25rem;
 }
 
-.text-7xl {
-  font-size: 4.5rem;
+.text-5xl {
+  font-size: 3rem;
   line-height: 1;
 }
 
-.text-green-300 {
-  --tw-text-opacity: 1;
-  color: rgb(134 239 172 / var(--tw-text-opacity));
+.text-7xl {
+  font-size: 4.5rem;
+  line-height: 1;
 }

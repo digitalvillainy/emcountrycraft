@@ -12,19 +12,19 @@ description = "Default layout"
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.8/dist/cdn.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
-<body class="{{ 'page-'~this.page.id }}">
+<body class="{{ 'page-'~this.page.id }} w-full">
 
-<!-- Header -->
-<header id="layout-header" class="text-3xl">
-    header element
+<!-- Header/Navigation -->
+<header id="layout-header" class="flex flex-col">
+    {% partial 'nav/navigation' %}
 </header>
 
 <!--TODO: Add Flash message later-->
 
 <!-- Content -->
-<section id="layout-content" class="text-green-300 bg-red-700">
+<main id="layout-content" class="flex-1">
     {% page %}
-</section>
+</main>
 
 <!-- Footer -->
 <footer id="layout-footer" class="text-7xl">
