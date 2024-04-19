@@ -1,15 +1,18 @@
-<section>
+<section class="flex flex-col justify-center bg-home-hero-pattern text-white text-2xl bg-cover bg-center backdrop-blur-3xl">
+    <!-- Search Bar  -->
+    <div class="flex flex-row justify-end">
+        {% partial 'icons/search' %}
+    </div>
+    {% partial 'icons/logo' %}
     <!--Tablet and Desktop Navigation-->
-    <nav class="w-full">
-        <ul class="flex flex-row justify-between w-full">
-            <li>
-                <a href="#">Home</a>
-                <a href="#">Store</a>
-            </li>
-            <li>
-                <a href="#">Blog</a>
-                <a href="#">About</a>
-            </li>
-        </ul>
+    <nav class="flex flex-row justify-between w-8/12 mx-auto">
+        <div class="w-2/12 flex justify-between">
+            <a href="#">home</a>
+            <a href="#">store</a>
+        </div>
+        <div class="w-2/12 flex justify-between">
+            <a href="#">blog</a>
+            <a href="#">about</a>
+        </div>
     </nav>
 </section>
