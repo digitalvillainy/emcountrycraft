@@ -1,18 +1,19 @@
-<section class="flex flex-col justify-center bg-home-hero-pattern text-white text-2xl bg-cover bg-center backdrop-blur-3xl">
-    <!-- Search Bar  -->
-    <div class="flex flex-row justify-end">
+<section class="flex flex-col justify-center text-white text-4xl relative bg-home-hero-pattern bg-cover bg-center font-architects">
+    <div class="z-20 pb-3">
+        <!-- Search Bar  -->
         {% partial 'icons/search' %}
+        {% partial 'icons/logo' %}
+        <!--Tablet and Desktop Navigation-->
+        <nav class="flex flex-row justify-between w-8/12 mx-auto">
+            <div class="w-2/12 flex justify-between">
+                <a class="hover:text-yellow-500" href="#">Home</a>
+                <a class="hover:text-yellow-500" href="#">Store</a>
+            </div>
+            <div class="w-2/12 flex justify-between">
+                <a class="hover:text-yellow-500" href="#">Blog</a>
+                <a class="hover:text-yellow-500" href="#">About</a>
+            </div>
+        </nav>
     </div>
-    {% partial 'icons/logo' %}
-    <!--Tablet and Desktop Navigation-->
-    <nav class="flex flex-row justify-between w-8/12 mx-auto">
-        <div class="w-2/12 flex justify-between">
-            <a href="#">home</a>
-            <a href="#">store</a>
-        </div>
-        <div class="w-2/12 flex justify-between">
-            <a href="#">blog</a>
-            <a href="#">about</a>
-        </div>
-    </nav>
+    <div class="absolute inset-0 bg-black/20 backdrop-blur-md"></div>
 </section>

@@ -7,6 +7,9 @@ module.exports = {
     ],
   theme: {
     extend: {
+        fontFamily:{
+            architects:["Architects Daughter", "cursive"]
+        },
         screens: {
             '3xl': '1900px'
         },
