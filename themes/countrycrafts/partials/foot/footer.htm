@@ -1,3 +1,12 @@
+==
+<?
+function onStart()
+{
+    //Updates year programmtically
+    $this['carbon'] = Carbon\Carbon::now()->year;
+}
+?>
+==
 <footer class="flex flex-row justify-center bg-mom-red border-t-4 border-mom-yellow xl:h-72 pt-8 relative">
     <div class="bg-mom-red border-t-4 border-mom-yellow h-4 w-full absolute -top-6"></div>
     <div class="flex flex-col w-10/12 xl:w-9/12 mx-auto xl:space-y-4">
@@ -57,7 +66,7 @@
 
         <!-- TODO: Have year be programmatically added -->
         <div class="text-center text-mom-yellow">
-            copyright &copy; 2024 - Em's Country Crafts
+            copyright &copy; {{ carbon }} - Em's Country Crafts
         </div>
     </div>
 </footer>
