@@ -11,7 +11,8 @@ module.exports = {
         colors: {
             ...colors,
             "mom-red":"#9B262C",
-            "mom-yellow": "#F9CC57"
+            "mom-yellow": "#F9CC57",
+            "mom-teal": "#32837D"
         },
         fontFamily:{
             architects:["Architects Daughter", "cursive"]

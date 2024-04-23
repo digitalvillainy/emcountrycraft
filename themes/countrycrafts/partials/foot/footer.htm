@@ -1,42 +1,61 @@
-<footer class="flex flex-row justify-center bg-mom-red border-t-4 border-mom-yellow h-64 pt-8">
-    <div class="flex flex-col w-9/12 mx-auto">
+<footer class="flex flex-row justify-center bg-mom-red border-t-4 border-mom-yellow xl:h-72 pt-8 relative">
+    <div class="bg-mom-red border-t-4 border-mom-yellow h-4 w-full absolute -top-6"></div>
+    <div class="flex flex-col w-10/12 xl:w-9/12 mx-auto xl:space-y-4">
         <!-- TODO: Should do a search by category -->
 
         <!-- Wrapper for footer content w/o copyright -->
-        <div class="flex flex-row flex-grow">
-            <div class="flex flex-col text-white">
+        <div class="flex flex-col md:flex-row flex-grow justify-between md:space-x-10">
+            <div class="flex flex-col text-white font-architects order-2 md:order-1 my-4 xl:my-0"
                 <h5 class="text-xl">Shop By Topic</h5>
                 <ul>
                     <li>
-                        <a href="#">Shawls</a>
+                        <a class="hover:text-yellow-500" href="#">Shawls</a>
                     </li>
                     <li>
-                        <a href="#">Scarfs</a>
+                        <a class="hover:text-yellow-500" href="#">Scarfs</a>
                     </li>
                     <li>
-                        <a href="#">Hats</a>
+                        <a class="hover:text-yellow-500" href="#">Hats</a>
                     </li>
                     <li>
-                        <a href="#">Bags</a>
+                        <a class="hover:text-yellow-500" href="#">Bags</a>
                     </li>
                 </ul>
             </div>
 
+            <!-- TODO: Setup Newsletter with Mailchimp -->
+            <div class="text-white font-architects flex flex-col bg-mom-teal md:w-96 rounded-xl place-items-center p-3 shadow-xl order-1 md:order-2">
+                <h5 class="text-2xl">Newsletter</h5>
+                <div class="flex flex-row justify-between space-x-6 py-3 w-full">
+                    <input class="rounded-lg h-auto pl-3 w-full" type="text" placeholder="Email">
+                    <button class="bg-green-600 py-2 px-4 rounded-xl">SUBMIT</button>
+                </div>
+                <p>
+                    We promise not to spam you everyday and to only update you on new designs, events, and discounts.
+                </p>
+            </div>
+
             <!-- TODO: What Socials does Mom have for the business -->
-            <ul>
+            <ul class="flex flex-row w-48 mx-auto pb-4 justify-between order-last">
                 <li>
-                    <a href="#"></a>
+                    <a href="#">
+                        {% partial "icons/email" %}
+                    </a>
                 </li>
                 <li>
-                    <a href="#"></a>
+                    <a href="#">
+                        {% partial "icons/facebook" %}
+                    </a>
                 </li>
                 <li>
-                    <a href=""></a>
+                    <a href="#">
+                        {% partial "icons/instagram" %}
+                    </a>
                 </li>
             </ul>
         </div>
 
-        <!-- TODO: Finish Footer elements -->
+        <!-- TODO: Have year be programmatically added -->
         <div class="text-center text-mom-yellow">
             copyright &copy; 2024 - Em's Country Crafts
         </div>
