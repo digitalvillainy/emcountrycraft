@@ -1,0 +1,34 @@
+<div class="flex flex-row justify-end relative">
+    <div
+        x-data="{open: false, search: ''}"
+        x-cloak
+        @click.self="open = !open; $nextTick(()=> { $refs.input.focus(); }); "
+        @click.away="open = false"
+        class="bg-white/20 backdrop-blur-sm p-2 rounded-xl m-2 cursor-pointer flex flex-row-reverse place-items-center justify-between ml-3 mr-5 absolute z-10">
+        <svg
+            width="24"
+            height="24"
+            viewBox="0 0 39 39"
+            fill="none"
+            @click.self="open = !open; $nextTick(()=> { $refs.input.focus(); }); "
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <g clip-path="url(#clip0_18_38)">
+                <path d="M31.6875 15.8438C31.6875 19.34 30.5525 22.5697 28.6406 25.19L38.284 34.841C39.2361 35.7932 39.2361 37.3395 38.284 38.2916C37.3318 39.2438 35.7855 39.2438 34.8334 38.2916L25.19 28.6406C22.5697 30.5602 19.34 31.6875 15.8438 31.6875C7.0916 31.6875 0 24.5959 0 15.8438C0 7.0916 7.0916 0 15.8438 0C24.5959 0 31.6875 7.0916 31.6875 15.8438ZM15.8438 26.8125C21.8994 26.8125 26.8125 21.8994 26.8125 15.8438C26.8125 9.78809 21.8994 4.875 15.8438 4.875C9.78809 4.875 4.875 9.78809 4.875 15.8438C4.875 21.8994 9.78809 26.8125 15.8438 26.8125Z" fill="white"/>
+            </g>
+            <defs>
+                <clipPath id="clip0_18_38">
+                    <rect width="39" height="39" fill="white"/>
+                </clipPath>
+            </defs>
+        </svg>
+        <div x-show="open" class="ml-3 mr-5 w-72">
+            <input
+                type="text"
+                x-ref="input"
+                class="h-11 w-full rounded-md text-base text-black font-sans pl-2"
+                x-model="search"
+            />
+        </div>
+    </div>
+</div>
