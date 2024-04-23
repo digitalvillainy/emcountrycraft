@@ -15,7 +15,8 @@ module.exports = {
             "mom-teal": "#32837D"
         },
         fontFamily:{
-            architects:["Architects Daughter", "cursive"]
+            architects:["Architects Daughter", "cursive"],
+            dancing:["Dancing Script", "cursive"]
         },
         screens: {
             '3xl': '1900px'
