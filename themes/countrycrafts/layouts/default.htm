@@ -15,7 +15,7 @@ description = "Default layout"
     <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.8/dist/cdn.min.js"></script>
 </head>
-<body class="{{ 'page-'~this.page.id }} w-full">
+<body class="flex flex-col h-screen">
 
 <!-- Header/Navigation -->
 <header id="layout-header" class="flex flex-col">
@@ -25,13 +25,13 @@ description = "Default layout"
 <!--TODO: Add Flash message later-->
 
 <!-- Content -->
-<main id="layout-content" class="flex-1">
+<main id="layout-content" class="flex-grow">
     {% page %}
 </main>
 
 <!-- Footer -->
-<footer id="layout-footer" class="text-7xl">
-    footer
+<footer id="layout-footer">
+    {% partial 'foot/footer' %}
 </footer>
 
 </body>
