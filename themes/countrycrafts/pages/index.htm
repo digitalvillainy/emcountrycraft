@@ -7,12 +7,52 @@ meta_title = "Welcome to Em's Country Crafts!"
 <section class="flex flex-col space-y-16 my-16 place-items-center">
     <!-- Top Element -->
     <div class="w-11/12 mx-auto">
-        <h1 class="text-5xl text-mom-red font-dancing">Welcome To Em's Country Crafts</h1>
+        <h1 class="text-5xl text-center text-mom-red font-dancing">Welcome To Em's Country Crafts</h1>
         <div class="mt-12 flex flex-row justify-center">
-            {% partial 'cards/card.htm' %}
+            {% partial 'cards/hori-card.htm'
+            title="Welcome To Em's Country Crafts"
+            text="Quality isn’t just about the years I’ve spent honing my craft, it’s about ensuring that each stitch is built to last so you and your family can enjoy a fine piece for generations. Place an order to get your quality crocheted curio today!"
+            img="assets/images/handcrafted.jpg"
+            bgColor="bg-orange-500"
+            %}
         </div>
     </div>
 
     <!-- TODO: Finish Front page -->
-    <div class="w-full h-96 bg-black"></div>
+    <div class="w-full h-[52em] bg-black bg-wall-of-yarn bg-center bg-cover relative">
+        <div class="absolute my-20 z-20 text-white">
+            <h5 class="text-7xl text-center text-shadow-sm font-dancing">How To Order</h5>
+            <div class="flex flex-row justify-between w-9/12 mx-auto my-16">
+                <div class="flex flex-col bg-black/85 bg-blur-sm p-8 font-dancing text-6xl rounded-xl w-2/12 space-y-4">
+                    <h5 class="font-dancing">1. Item Type</h5>
+                    <p>
+                        Select the type of item you want from the stroe.
+                    </p>
+                </div>
+                <div class="flex flex-col bg-black/85 bg-blur-sm p-8 font-dancing text-6xl rounded-xl w-2/12 space-y-4">
+                    <h5 class="font-dancing">2. Measure Size</h5>
+                    <p>
+                        Depending on the item you'll have to give us your measurements.
+                    </p>
+                </div>
+                <div class="flex flex-col bg-black/85 bg-blur-sm p-8 font-dancing text-6xl rounded-xl w-2/12 space-y-4">
+                    <h5 class="font-dancing">3. Color Scheme</h5>
+                    <p>
+                        Color Schemes are limited on current stocks of yarn.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute inset-0 bg-black/10 backdrop-blur-sm"></div>
+    </div>
+    <div class="w-full flex flex-row justify-center">
+        {%
+            partial 'cards/vert-card.htm'
+            title="Teal Wrap"
+            text="Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
+            img="assets/images/TealWrap.png"
+            bgColor="bg-teal-500"
+        %}
+    </div>
 </section>
