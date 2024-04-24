@@ -4,12 +4,15 @@ url = "/"
 layout = "default"
 meta_title = "Welcome to Em's Country Crafts!"
 ==
-<section class="flex flex-col place-items-center">
-    <h1 class="text-5xl text-mom-red font-dancing">Welcome To Em's Country Crafts</h1>
-    <div class="mt-12 flex flex-row justify-center">
-        {% partial 'cards/card.htm' %}
+<section class="flex flex-col space-y-16 my-16 place-items-center">
+    <!-- Top Element -->
+    <div class="w-11/12 mx-auto">
+        <h1 class="text-5xl text-mom-red font-dancing">Welcome To Em's Country Crafts</h1>
+        <div class="mt-12 flex flex-row justify-center">
+            {% partial 'cards/card.htm' %}
+        </div>
     </div>
 
-
-
+    <!-- TODO: Finish Front page -->
+    <div class="w-full h-96 bg-black"></div>
 </section>
