@@ -23,21 +23,21 @@ meta_title = "Welcome to Em's Country Crafts!"
         <div class="absolute my-20 z-20 text-white">
             <h5 class="text-7xl text-center text-shadow-sm font-dancing">How To Order</h5>
             <div class="flex flex-row justify-between w-9/12 mx-auto my-16">
-                <div class="flex flex-col bg-black/85 bg-blur-sm p-8 font-dancing text-6xl rounded-xl w-2/12 space-y-4">
+                <div class="flex flex-col bg-black/85 bg-blur-sm p-8 font-dancing text-6xl rounded-xl w-3/12 space-y-4">
                     <h5 class="font-dancing">1. Item Type</h5>
-                    <p>
+                    <p class="w-full">
                         Select the type of item you want from the stroe.
                     </p>
                 </div>
-                <div class="flex flex-col bg-black/85 bg-blur-sm p-8 font-dancing text-6xl rounded-xl w-2/12 space-y-4">
+                <div class="flex flex-col bg-black/85 bg-blur-sm p-8 font-dancing text-6xl rounded-xl w-3/12 space-y-4">
                     <h5 class="font-dancing">2. Measure Size</h5>
-                    <p>
+                    <p class="w-full">
                         Depending on the item you'll have to give us your measurements.
                     </p>
                 </div>
-                <div class="flex flex-col bg-black/85 bg-blur-sm p-8 font-dancing text-6xl rounded-xl w-2/12 space-y-4">
+                <div class="flex flex-col bg-black/85 bg-blur-sm p-8 font-dancing text-6xl rounded-xl w-3/12 space-y-4">
                     <h5 class="font-dancing">3. Color Scheme</h5>
-                    <p>
+                    <p class="w-full">
                         Color Schemes are limited on current stocks of yarn.
                     </p>
                 </div>
@@ -46,13 +46,28 @@ meta_title = "Welcome to Em's Country Crafts!"
 
         <div class="absolute inset-0 bg-black/10 backdrop-blur-sm"></div>
     </div>
-    <div class="w-full flex flex-row justify-center">
+    <!-- TODO: Connect with backend. Should be editable by Mom. -->
+    <div class="w-8/12 mx-auto flex flex-row justify-around">
         {%
             partial 'cards/vert-card.htm'
             title="Teal Wrap"
             text="Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
             img="assets/images/TealWrap.png"
             bgColor="bg-teal-500"
+        %}
+        {%
+            partial 'cards/vert-card.htm'
+            title="Teal Wrap"
+            text="Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
+            img="assets/images/TealWrap.png"
+            bgColor="bg-indigo-500"
+        %}
+        {%
+            partial 'cards/vert-card.htm'
+            title="Teal Wrap"
+            text="Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
+            img="assets/images/TealWrap.png"
+            bgColor="bg-red-300"
         %}
     </div>
 </section>
