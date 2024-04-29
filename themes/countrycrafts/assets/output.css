@@ -679,6 +679,21 @@ video {
   margin-bottom: 1.25rem;
 }
 
+.my-8 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.mx-6 {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
 .ml-3 {
   margin-left: 0.75rem;
 }
@@ -773,6 +788,30 @@ video {
 
 .h-52 {
   height: 13rem;
+}
+
+.h-\[56rem\] {
+  height: 56rem;
+}
+
+.h-\[46rem\] {
+  height: 46rem;
+}
+
+.h-\[50rem\] {
+  height: 50rem;
+}
+
+.h-\[43rem\] {
+  height: 43rem;
+}
+
+.h-\[38rem\] {
+  height: 38rem;
+}
+
+.h-60 {
+  height: 15rem;
 }
 
 .w-10\/12 {
@@ -895,6 +934,10 @@ video {
   place-items: center;
 }
 
+.justify-start {
+  justify-content: flex-start;
+}
+
 .justify-end {
   justify-content: flex-end;
 }
@@ -939,6 +982,12 @@ video {
   --tw-space-y-reverse: 0;
   margin-top: calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
+}
+
+.space-y-6 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
 }
 
 .rounded-2xl {
@@ -1080,6 +1129,16 @@ video {
   background-color: rgb(248 113 113 / var(--tw-bg-opacity));
 }
 
+.bg-slate-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
+}
+
+.bg-slate-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(241 245 249 / var(--tw-bg-opacity));
+}
+
 .bg-home-hero-pattern {
   background-image: url('images/YarnBanner.jpeg');
 }
@@ -1138,6 +1197,11 @@ video {
   padding-bottom: 1.5rem;
 }
 
+.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
 .pb-3 {
   padding-bottom: 0.75rem;
 }
@@ -1164,6 +1228,10 @@ video {
 
 .pr-6 {
   padding-right: 1.5rem;
+}
+
+.pt-6 {
+  padding-top: 1.5rem;
 }
 
 .text-center {

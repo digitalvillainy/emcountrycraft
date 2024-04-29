@@ -1,0 +1,29 @@
+<!-- TODO: Make it so you can add up to four images -->
+<article class="flex flex-col justify-between {{ bgColor }} rounded-2xl w-4/12 h-auto relative space-y-6 p-3">
+    <div class="flex flex-row justify-end p-3">
+        <div class="flex flex-row space-x-5 absolute -left-8 -top-8 z-20">
+            <img src="{{ imgs[0]|theme }}" alt="handcrafted" class="w-40 h-auto rounded-2xl">
+            <div class="flex flex-col space-y-5">
+                <img src="{{ imgs[1]|theme }}" alt="handcrafted" class="w-auto h-32 rounded-2xl">
+                <img src="{{ imgs[2]|theme }}" alt="handcrafted" class="w-auto h-32 rounded-2xl">
+            </div>
+            <img src="{{ imgs[3]|theme }}" alt="handcrafted" class="w-40 h-auto rounded-2xl">
+        </div>
+        <div class="w-6/12 py-6 pr-6">
+            <h1 class="text-5xl text-mom-yellow font-dancing">{{title}}</h1>
+            <p class="text-xl text-white font-architects mt-3 h-auto">
+                {{text}}
+            </p>
+        </div>
+    </div>
+    <div class="flex flex-col mx-6 space-y-6 my-8 pt-6 font-architects">
+        <div class="flex flex-row justify-between space-x-5 w-6/12">
+            <input class="border-yellow-500 border-2 rounded-lg h-auto pl-3 w-full bg-slate-100" type="email" placeholder="Email">
+            <input class="border-yellow-500 border-2 rounded-lg h-auto pl-3 w-full bg-slate-100" type="email" placeholder="Email">
+        </div>
+        <textarea class="border-yellow-500 border-2 rounded-lg pl-3 w-full h-60 bg-slate-100" name="body" id="body" Placeholder="Type Your Message..."></textarea>
+        <div class="flex flex-row justify-end">
+            <button class="text-white border-green-700 border-2 bg-green-500 py-1 px-4 rounded-xl w-32">SUBMIT</button>
+        </div>
+    </div>
+</article>
