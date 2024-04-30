@@ -6,22 +6,25 @@ url = "/store"
 ==
 <section class="flex flex-col space-y-16 my-16 place-items-center">
     <h1 class="text-5xl text-center text-mom-red font-dancing">Store</h1>
-    {% partial 'cards/item-category-card'
+    {% partial 'cards/hori-card.htm'
         title='Shawls'
         text='Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.'
         imgs=['assets/images/TealWrap.png', 'assets/images/TealWrap.png','assets/images/TealWrap.png','assets/images/TealWrap.png']
+        link=['Purchase', '/item-1']
         bgColor='bg-teal-500'
     %}
-    {% partial 'cards/item-category-card'
+    {% partial 'cards/hori-card.htm'
         title='Ear Warmers'
         text='Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.'
         imgs=['assets/images/TealWrap.png', 'assets/images/TealWrap.png','assets/images/TealWrap.png','assets/images/TealWrap.png']
+        link=['Purchase', '/item-1']
         bgColor='bg-purple-800'
     %}
-    {% partial 'cards/item-category-card'
+    {% partial 'cards/hori-card.htm'
         title='Baby Blankets'
         text='Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.'
         imgs=['assets/images/TealWrap.png', 'assets/images/TealWrap.png','assets/images/TealWrap.png','assets/images/TealWrap.png']
+        link=['Purchase', '/item-1']
         bgColor='bg-red-400'
     %}
     {% partial 'cards/commission-card'

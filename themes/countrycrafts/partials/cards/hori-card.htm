@@ -1,9 +1,26 @@
-<article class="flex flex-row justify-end {{ bgColor }} rounded-2xl w-4/12 h-96 relative">
+<article class="flex flex-col justify-between {{ bgColor }} rounded-2xl w-4/12 h-96 relative">
+    {% if imgs %}
+    <div class="flex flex-row space-x-5 absolute -left-8 -top-8 z-20">
+        <img src="{{ imgs[0]|theme }}" alt="handcrafted" class="w-40 h-auto rounded-2xl">
+        <div class="flex flex-col space-y-5">
+            <img src="{{ imgs[1]|theme }}" alt="handcrafted" class="w-auto h-32 rounded-2xl">
+            <img src="{{ imgs[2]|theme }}" alt="handcrafted" class="w-auto h-32 rounded-2xl">
+        </div>
+        <img src="{{ imgs[3]|theme }}" alt="handcrafted" class="w-40 h-auto rounded-2xl">
+    </div>
+    {% endif %}
+    {% if img %}
     <img src="{{ img|theme }}" alt="handcrafted" class="w-auto h-80 rounded-2xl absolute -left-8 bottom-20 z-20">
-    <div class="w-5/12 py-8 pr-8">
-        <h1 class="text-5xl text-mom-yellow font-dancing">{{title}}</h1>
-        <p class="text-xl text-white font-architects mt-3">
-            {{text}}
-        </p>
+    {% endif %}
+    <div class="flex flex-row justify-end w-full">
+        <div class="flex flex-col justify-end w-5/12 py-8 pr-8">
+            <h1 class="text-5xl text-mom-yellow font-dancing">{{title}}</h1>
+            <p class="text-xl text-white font-architects mt-3">
+                {{text}}
+            </p>
+            {% if link %}
+                <a class="w-full text-right text-3xl text-mom-yellow font-dancing" href="{{link[1]}}">{{link[0]}}</a>
+            {% endif %}
+        </div>
     </div>
 </article>

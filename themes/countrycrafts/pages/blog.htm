@@ -5,5 +5,21 @@ layout = "default"
 url = "/blog"
 ==
 <section class="flex flex-col space-y-16 my-16 place-items-center">
-    Blog Page
+    <h1 class="text-5xl text-center text-mom-red font-dancing">Blog</h1>
+    {% partial 'cards/hori-card.htm'
+        title='Crochet Challenge'
+        text='Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate ...'
+        img='assets/images/handcrafted.jpg'
+        link=['Read More', '/blog']
+        bgColor='bg-teal-500'
+    %}
+
+    {% partial 'cards/hori-card.htm'
+        title='Crochet Challenge'
+        text='Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate ...'
+        img='assets/images/handcrafted.jpg'
+        link=['Read More', '/blog']
+        bgColor='bg-teal-500'
+    %}
+
 </section>

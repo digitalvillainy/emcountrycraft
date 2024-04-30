@@ -630,6 +630,30 @@ video {
   bottom: 1.5rem;
 }
 
+.-top-20 {
+  top: -5rem;
+}
+
+.-top-36 {
+  top: -9rem;
+}
+
+.top-36 {
+  top: 9rem;
+}
+
+.-top-32 {
+  top: -8rem;
+}
+
+.-top-24 {
+  top: -6rem;
+}
+
+.-top-16 {
+  top: -4rem;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -902,6 +926,10 @@ video {
   width: 16rem;
 }
 
+.w-7\/12 {
+  width: 58.333333%;
+}
+
 .flex-grow {
   flex-grow: 1;
 }
@@ -1139,6 +1167,11 @@ video {
   background-color: rgb(241 245 249 / var(--tw-bg-opacity));
 }
 
+.bg-red-900 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(127 29 29 / var(--tw-bg-opacity));
+}
+
 .bg-home-hero-pattern {
   background-image: url('images/YarnBanner.jpeg');
 }
@@ -1236,6 +1269,14 @@ video {
 
 .text-center {
   text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-end {
+  text-align: end;
 }
 
 .font-architects {
