@@ -1,25 +1,25 @@
-##
-meta_title = "Blog Page | Welcome to Em's Country Crafts!"
-title = "Blog"
-layout = "default"
 url = "/blog"
+layout = "default"
+title = "Blog"
+meta_title = "Blog Page | Welcome to Em's Country Crafts!"
+
+[collection blog]
+handle = "Blog\Post"
 ==
+{% set posts = blog.paginate(2)%}
 <section class="flex flex-col space-y-16 my-16 place-items-center">
     <h1 class="text-5xl text-center text-mom-red font-dancing">Blog</h1>
-    {% partial 'cards/hori-card.htm'
-        title='Crochet Challenge'
-        text='Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate ...'
-        img='assets/images/handcrafted.jpg'
-        link=['Read More', '/blog']
-        bgColor='bg-teal-500'
-    %}
-
-    {% partial 'cards/hori-card.htm'
-        title='Crochet Challenge'
-        text='Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate ...'
-        img='assets/images/handcrafted.jpg'
-        link=['Read More', '/blog']
-        bgColor='bg-teal-500'
-    %}
-
+    <div class="flex flex-col space-y-16 w-full place-items-center [&>*:nth-child(even)]:bg-red-700">
+        {% for post in posts %}
+        {% partial 'cards/hori-card.htm'
+            title=post.title
+            text=post.featured_text
+            img='assets/images/TealWrap.png'
+            link=['Read More...', post.slug]
+            bgColor='bg-teal-500'
+        %}
+        {% endfor %}
+    </div>
+    <span>{{'blog/post'|page({slug: post.slug})}}</span>
+    {{posts.links|raw}}
 </section>

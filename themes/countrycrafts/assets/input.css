@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.pagination {
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+}
+.pagination .page-item {
+    margin: 0 1rem;
+    @apply bg-gray-400 text-white rounded;
+}
+
+.pagination .page-item.active{
+    margin: 0 1rem;
+    @apply bg-gray-800 text-white rounded shadow-lg text-lg;
+}
+
+.pagination .page-item .page-link {
+    @apply p-2;
+}

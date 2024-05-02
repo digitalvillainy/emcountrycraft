@@ -1,21 +1,17 @@
-uuid: b022a74b-15e6-4c6b-9eb9-17efc5103543
-type: structure
+uuid: 34ce92dd-01d3-4da4-bcfd-ee2adb8e8f2c
 handle: Blog\Category
+type: structure
 name: Category
 drafts: false
 
-customMessages:
-    buttonCreate: New Category
-
 structure:
-    maxDepth: 1
+    maxDepth: 3
 
 navigation:
-    label: Categories
+    icon: icon-tree
     parent: Blog\Post
-    icon: octo-icon-list-ul
-    order: 150
+    order: 10
 
 fields:
     description:
-        label: Description
+        label: description
