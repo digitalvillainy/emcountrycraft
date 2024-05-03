@@ -1,0 +1,23 @@
+url = "/blog/category/:slug"
+layout = "default"
+title = "Blog Category"
+
+[section category]
+handle = "Blog\Category"
+identifier = "{{ :slug }}"
+value = "{{ :slug }}"
+
+[collection blog]
+handle = "Blog\Post"
+==
+{% set posts = blog.whereRelation('categories', 'slug', category.slug).paginate(2) %}
+
+<div class="flex flex-col justify-center">
+    <div class="flex flex-col">
+        {% for post in posts %}
+            {{post}}
+        {% endfor %}
+    </div>
+
+    {{posts.links|raw}}
+</div>
