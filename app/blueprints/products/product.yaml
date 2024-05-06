@@ -1,0 +1,44 @@
+uuid: 42d3873b-8bf8-4830-888a-d8762a2947ad
+handle: Products\Product
+type: stream
+name: Product
+drafts: true
+
+primaryNavigation:
+    label: Products
+    icon: icon-cubes
+    order: 130
+
+navigation:
+    icon: icon-cube
+    parent: Products\Product
+    order: 10
+
+fields:
+    description:
+        label: Description
+        type: textarea
+        span: row
+
+    featured_text:
+        label: Featured Text
+        type: text
+        span: row
+
+    product_price:
+        label: Price
+        type: number
+        span: row
+
+    product_image:
+        label: Product Image
+        type: fileupload
+        mode: image
+        maxFiles: 1
+
+    categories:
+        tab: Manage
+        label: Categories
+        commentAbove: 'Select categories the product belongs to'
+        type: entries
+        source: Products/Category

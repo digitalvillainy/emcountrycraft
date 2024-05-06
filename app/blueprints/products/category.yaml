@@ -1,0 +1,17 @@
+uuid: f7e9a9b1-5da3-42c6-b322-60d8e36bb48c
+handle: Products\Category
+type: structure
+name: Product Category
+drafts: false
+
+structure:
+    maxDepth: 3
+
+navigation:
+    icon: icon-hand-spock-o
+    parent: Products\Product
+    order: 10
+
+fields:
+    description:
+        label: description
