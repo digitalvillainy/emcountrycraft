@@ -1,32 +1,29 @@
-##
-meta_title = "Store Page | Welcome to Em's Country Crafts!"
-title = "Store"
-layout = "default"
 url = "/store"
+layout = "default"
+title = "Store"
+meta_title = "Store Page | Welcome to Em's Country Crafts!"
+
+[collection Catalog]
+handle = "Catalog\Product"
 ==
 <section class="flex flex-col space-y-16 my-16 place-items-center">
+    {% set products = Catalog.paginate(8) %}
     <h1 class="text-5xl text-center text-mom-red font-dancing">Store</h1>
-    {% partial 'cards/hori-card.htm'
-        title='Shawls'
-        text='Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.'
-        imgs=['assets/images/TealWrap.png', 'assets/images/TealWrap.png','assets/images/TealWrap.png','assets/images/TealWrap.png']
-        link=['Purchase', '/item-1']
-        bgColor='bg-teal-500'
-    %}
-    {% partial 'cards/hori-card.htm'
-        title='Ear Warmers'
-        text='Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.'
-        imgs=['assets/images/TealWrap.png', 'assets/images/TealWrap.png','assets/images/TealWrap.png','assets/images/TealWrap.png']
-        link=['Purchase', '/item-1']
-        bgColor='bg-purple-800'
-    %}
-    {% partial 'cards/hori-card.htm'
-        title='Baby Blankets'
-        text='Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.'
-        imgs=['assets/images/TealWrap.png', 'assets/images/TealWrap.png','assets/images/TealWrap.png','assets/images/TealWrap.png']
-        link=['Purchase', '/item-1']
-        bgColor='bg-red-400'
-    %}
+    <div class="flex flex-wrap flex-row justify-evenly w-4/12 mx-auto [&>*:nth-child(2n)]:bg-mom-navy [&>*:nth-child(3n)]:bg-mom-red">
+        {% for product in products %}
+            {%
+                partial 'cards/vert-card.htm'
+                title=product.title
+                text=product.featured_text
+                img=product.product_image.path
+                link=['Purchase', product.slug]
+                bgColor='bg-mom-teal'
+            %}
+        {% endfor %}
+
+    </div>
+    {{products.links|raw}}
+
     {% partial 'cards/commission-card'
         title='Want something custom?'
         text='Do you want a scarf, or a hat? Or something completely unique? I love new challegnes! Contact today to inquire about custom orders.'

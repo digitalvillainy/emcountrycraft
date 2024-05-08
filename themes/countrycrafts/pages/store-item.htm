@@ -1,16 +1,20 @@
-##
-meta_title = "Store Item Page | Welcome to Em's Country Crafts!"
-title = "Store"
+url = "/store/item/:slug"
 layout = "default"
-url = "/store-item"
+title = "Store Item"
+meta_title = "Store Item Page | Welcome to Em's Country Crafts!"
+
+[section Product]
+handle = "Catalog\Product"
+identifier = "{{ :slug }}"
+value = "{{ :slug }}"
 ==
 <!-- TODO: Needs to be updated to allow wild-card -->
 <section class="flex flex-col space-y-16 my-16 place-items-center">
     <!-- TODO: Item should be a wild-card -->
     <h1 class="text-5xl text-center text-mom-red font-dancing">Store - Item</h1>
     {% partial 'cards/purchase-card'
-        title='Shawls'
-        text='Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.'
+        title=Product.title
+        text=Product.description
         imgs=['assets/images/TealWrap.png', 'assets/images/TealWrap.png','assets/images/TealWrap.png','assets/images/TealWrap.png']
         bgColor='bg-teal-500'
     %}

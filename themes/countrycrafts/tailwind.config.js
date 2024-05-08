@@ -14,7 +14,9 @@ module.exports = {
             ...colors,
             "mom-red":"#9B262C",
             "mom-yellow": "#F9CC57",
-            "mom-teal": "#32837D"
+            "mom-teal": "#32837D",
+            "mom-navy": "#2B3360",
+            "mom-pink": "#E6799B"
         },
         textShadow: {
             sm: '0 1px 2px rgba(0, 0, 0, 0.25)',

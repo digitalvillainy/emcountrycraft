@@ -1,20 +1,25 @@
 uuid: 42d3873b-8bf8-4830-888a-d8762a2947ad
-handle: Products\Product
+handle: Catalog\Product
 type: stream
 name: Product
 drafts: true
 
 primaryNavigation:
-    label: Products
+    label: Catalog
     icon: icon-cubes
     order: 130
 
 navigation:
     icon: icon-cube
-    parent: Products\Product
+    parent: Catalog\Product
     order: 10
 
 fields:
+    Name:
+        label: Name
+        type: text
+        span: row
+
     description:
         label: Description
         type: textarea
@@ -30,6 +35,12 @@ fields:
         type: number
         span: row
 
+    Stock:
+        label: Stock
+        type: number
+        span: row
+        default: 1
+
     product_image:
         label: Product Image
         type: fileupload
@@ -37,8 +48,7 @@ fields:
         maxFiles: 1
 
     categories:
-        tab: Manage
         label: Categories
         commentAbove: 'Select categories the product belongs to'
         type: entries
-        source: Products/Category
+        source: Catalog\Category
