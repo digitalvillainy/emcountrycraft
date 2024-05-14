@@ -1,0 +1,32 @@
+uuid: bba30aac-6129-4bb5-9730-b7ecea1f6867
+handle: Pages\Home
+type: structure
+name: Home
+drafts: false
+
+primaryNavigation:
+    label: Pages
+    icon: icon-files
+    order: 140
+
+navigation:
+    icon: icon-file
+    parent: Pages\Home
+    order: 10
+
+fields:
+    intro_title:
+        label: Introduction Title
+        type: textarea
+        span: row
+
+    intro:
+        label: Introduction Content
+        type: textarea
+        span: row
+
+    banner:
+        label: Banner
+        type: fileupload
+        mode: image
+        maxFiles: 1

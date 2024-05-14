@@ -14,7 +14,7 @@ handle = "Blog\Post"
         {% partial 'cards/hori-card.htm'
             title=post.title
             text=post.featured_text
-            img='assets/images/TealWrap.png'
+            img=post.preview_image.path
             link=['Read More...', post.slug]
             bgColor='bg-teal-500'
         %}

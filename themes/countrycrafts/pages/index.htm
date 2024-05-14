@@ -1,24 +1,30 @@
-##
-title = "Home Page"
 url = "/"
 layout = "default"
+title = "Home Page"
 meta_title = "Welcome to Em's Country Crafts!"
+
+[collection home]
+handle = "Pages\Home"
+
+[collection Catalog]
+handle = "Catalog\Product"
 ==
+{% set intros = home.get()%}
+{% set products = Catalog.get().random(3) %}
 <section class="flex flex-col space-y-16 my-16 place-items-center">
     <!-- Top Element -->
     <div class="w-11/12 mx-auto">
         <h1 class="text-5xl text-center text-mom-red font-dancing">Welcome To Em's Country Crafts</h1>
         <div class="mt-12 flex flex-row justify-center">
             {% partial 'cards/hori-card.htm'
-            title="Welcome To Em's Country Crafts"
-            text="Quality isn’t just about the years I’ve spent honing my craft, it’s about ensuring that each stitch is built to last so you and your family can enjoy a fine piece for generations. Place an order to get your quality crocheted curio today!"
-            img="assets/images/handcrafted.jpg"
-            bgColor="bg-orange-500"
+            title=intros[0].title
+            text=intros[0].intro
+            img=intros[0].banner.path
+            bgColor="bg-mom-orange"
             %}
         </div>
     </div>
 
-    <!-- TODO: Finish Front page -->
     <div class="w-full h-[52em] bg-black bg-wall-of-yarn bg-center bg-cover relative">
         <div class="absolute my-20 z-20 text-white">
             <h5 class="text-7xl text-center text-shadow-sm font-dancing">How To Order</h5>
@@ -46,28 +52,17 @@ meta_title = "Welcome to Em's Country Crafts!"
 
         <div class="absolute inset-0 bg-black/10 backdrop-blur-sm"></div>
     </div>
-    <!-- TODO: Connect with backend. Should be editable by Mom. -->
-    <div class="w-8/12 mx-auto flex flex-row justify-around">
-        {%
-            partial 'cards/vert-card.htm'
-            title="Teal Wrap"
-            text="Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
-            img="assets/images/TealWrap.png"
-            bgColor="bg-mom-teal"
-        %}
-        {%
-            partial 'cards/vert-card.htm'
-            title="Teal Wrap"
-            text="Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
-            img="assets/images/TealWrap.png"
-            bgColor="bg-mom-navy"
-        %}
-        {%
-            partial 'cards/vert-card.htm'
-            title="Teal Wrap"
-            text="Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
-            img="assets/images/TealWrap.png"
-            bgColor="bg-mom-pink"
-        %}
+    <div class="w-8/12 mx-auto flex flex-row justify-around [&>*:nth-child(1)]:bg-mom-teal [&>*:nth-child(3n)]:bg-mom-pink">
+        {% for product in products %}
+            {%
+                partial 'cards/vert-card.htm'
+                title=product.title
+                text=product.featured_text
+                img=product.product_image.path
+                link=['Purchase', product.slug]
+                bgColor='bg-mom-navy'
+            %}
+        {% endfor %}
+
     </div>
 </section>

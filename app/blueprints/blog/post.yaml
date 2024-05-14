@@ -27,9 +27,9 @@ fields:
         type: textarea
         span: row
 
-    banner:
+    preview_image:
         tab: Manage
-        label: Banner
+        label: Preview Image
         type: fileupload
         mode: image
         maxFiles: 1
@@ -40,6 +40,7 @@ fields:
         commentAbove: 'Select categories the blog post belongs to'
         type: entries
         source: Blog\Category
+        
     author:
         tab: Manage
         label: Author
