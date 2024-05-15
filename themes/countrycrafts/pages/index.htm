@@ -59,7 +59,7 @@ handle = "Catalog\Product"
                 partial 'cards/vert-card.htm'
                 title=product.title
                 text=product.featured_text
-                img=product.product_image.path
+                img=product.product_image[0].path
                 link=['Purchase', product.slug]
                 bgColor='bg-mom-navy'
             %}

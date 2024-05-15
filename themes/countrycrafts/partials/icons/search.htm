@@ -1,6 +1,6 @@
 <div class="flex flex-row justify-end relative">
     <div
-        x-data="{open: true, search: ''}"
+        x-data="{open: false, search: ''}"
         x-cloak
         @click.self="open = !open; $nextTick(()=> { $refs.input.focus(); }); "
         @click.away="open = false"
