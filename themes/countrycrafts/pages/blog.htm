@@ -9,7 +9,7 @@ handle = "Blog\Post"
 {% set posts = blog.paginate(2)%}
 <section class="flex flex-col space-y-16 my-16 place-items-center">
     <h1 class="text-5xl text-center text-mom-red font-dancing">Blog</h1>
-    <div class="flex flex-col space-y-16 w-full place-items-center [&>*:nth-child(even)]:bg-red-700">
+    <div class="flex flex-col space-y-16 w-10/12 mx-auto lg:w-full place-items-center [&>*:nth-child(even)]:bg-red-700">
         {% for post in posts %}
         {% partial 'cards/hori-card.htm'
             title=post.title
