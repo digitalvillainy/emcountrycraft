@@ -1,6 +1,6 @@
 <div class="flex flex-row justify-end relative">
     <div
-        x-data="{open: false, search: ''}"
+        x-data="{open: true, search: ''}"
         x-cloak
         @click.self="open = !open; $nextTick(()=> { $refs.input.focus(); }); "
         @click.away="open = false"
@@ -22,7 +22,7 @@
                 </clipPath>
             </defs>
         </svg>
-        <div x-show="open" class="ml-3 mr-5 w-72">
+        <div x-show="open" class="ml-3 mr-5 w-11/12">
             <input
                 type="text"
                 x-ref="input"
