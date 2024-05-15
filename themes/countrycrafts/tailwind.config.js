@@ -29,7 +29,9 @@ module.exports = {
             dancing:["Dancing Script", "cursive"]
         },
         screens: {
-            '3xl': '1900px'
+            '3xl': '1900px',
+            '4xl': '2000px',
+            '5xl': '2500px'
         },
         backgroundImage: {
             "home-hero-pattern": "url('images/YarnBanner.jpeg')",

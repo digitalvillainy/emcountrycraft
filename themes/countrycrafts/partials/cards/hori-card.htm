@@ -1,4 +1,4 @@
-<article class="flex flex-col xl:flex-row {{ bgColor }} space-y-32 rounded-2xl w-full xl:w-4/12 xl:h-96 relative">
+<article class="flex flex-col lg:flex-row {{ bgColor }} space-y-32 lg:space-y-6 rounded-2xl w-full lg:w-9/12 3xl:w-7/12 4xl:w-6/12 5xl:w-5/12 lg:h-96 relative">
     {% if imgs %}
     <div class="flex flex-row space-x-5 absolute -left-8 -top-8 z-20">
         <img src="{{ imgs[0] }}" alt="handcrafted" class="w-40 h-auto rounded-2xl">
@@ -10,14 +10,14 @@
     </div>
     {% endif %}
     {% if img %}
-    <div class="flex flex-row absolute -right-2 xl:-left-8 -top-8 z-20">
-        <img src="{{ img }}" alt="handcrafted" class="w-auto h-44 xl:h-60 rounded-2xl">
+    <div class="flex flex-row absolute -right-3 lg:-left-8 -top-8 z-20">
+        <img src="{{ img }}" alt="handcrafted" class="w-auto h-44 lg:h-60 xl:h-80 rounded-2xl">
     </div>
     {% endif %}
     <div class="flex flex-row justify-end w-full">
-        <div class="flex flex-col place-items-center mx-auto w-10/12 xl:w-5/12 py-8 xl:pr-8">
-            <h3 class="text-xl xl:text-3xl text-mom-yellow font-dancing text-shadow-lg">{{title}}</h3>
-            <p class="text-base xl:text-lg text-white font-architects mt-3">
+        <div class="flex flex-col place-items-center lg:place-items-end mx-auto lg:mx-0 w-10/12 lg:w-5/12 py-8 lg:pr-8">
+            <h3 class="text-2xl xl:text-3xl text-center text-mom-red font-dancing text-shadow-lg">{{title}}</h3>
+            <p class="text-xl lg:text-lg text-white font-architects mt-3">
                 {{text}}
             </p>
             {% if link %}
