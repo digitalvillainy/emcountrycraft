@@ -7,6 +7,7 @@
     flex-direction:row;
     justify-content: space-between;
 }
+
 .pagination .page-item {
     margin: 0 1rem;
     @apply bg-gray-400 text-white rounded;

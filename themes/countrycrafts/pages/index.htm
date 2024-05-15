@@ -11,38 +11,39 @@ handle = "Catalog\Product"
 ==
 {% set intros = home.get()%}
 {% set products = Catalog.get().random(3) %}
+
 <section class="flex flex-col space-y-16 my-16 place-items-center">
     <!-- Top Element -->
     <div class="w-11/12 mx-auto">
         <h1 class="text-5xl text-center text-mom-red font-dancing">Welcome To Em's Country Crafts</h1>
         <div class="mt-12 flex flex-row justify-center">
             {% partial 'cards/hori-card.htm'
-            title=intros[0].title
-            text=intros[0].intro
-            img=intros[0].banner.path
-            bgColor="bg-mom-orange"
+                title=intros[0].title
+                text=intros[0].intro
+                img=intros[0].banner.path
+                bgColor="bg-mom-orange"
             %}
         </div>
     </div>
 
-    <div class="w-full h-[52em] bg-black bg-wall-of-yarn bg-center bg-cover relative">
+    <div class="w-full h-[66em] xl:h-[52em] bg-black bg-wall-of-yarn bg-center bg-cover relative">
         <div class="absolute my-20 z-20 text-white">
-            <h5 class="text-7xl text-center text-shadow-sm font-dancing">How To Order</h5>
-            <div class="flex flex-row justify-between w-9/12 mx-auto my-16">
-                <div class="flex flex-col bg-black/85 bg-blur-sm p-8 font-dancing text-6xl rounded-xl w-3/12 space-y-4">
-                    <h5 class="font-dancing">1. Item Type</h5>
+            <h5 class="text-5xl xl:text-7xl text-center text-shadow-sm font-dancing">How To Order</h5>
+            <div class="flex flex-col xl:flex-row place-items-center xl:justify-between w-full xl:w-9/12 xl:mx-auto my-16 space-y-16">
+                <div class="flex flex-col bg-black/85 bg-blur-sm xl:p-8 font-dancing p-3 text-2xl xl:text-6xl rounded-xl w-9/12 xl:w-3/12 space-y-4">
+                    <h5>1. Item Type</h5>
                     <p class="w-full">
-                        Select the type of item you want from the stroe.
+                        Select the type of item you want from the store.
                     </p>
                 </div>
-                <div class="flex flex-col bg-black/85 bg-blur-sm p-8 font-dancing text-6xl rounded-xl w-3/12 space-y-4">
-                    <h5 class="font-dancing">2. Measure Size</h5>
+                <div class="flex flex-col bg-black/85 bg-blur-sm xl:p-8 font-dancing p-3 text-2xl xl:text-6xl rounded-xl w-9/12 xl:w-3/12 space-y-4">
+                    <h5>2. Measure Size</h5>
                     <p class="w-full">
                         Depending on the item you'll have to give us your measurements.
                     </p>
                 </div>
-                <div class="flex flex-col bg-black/85 bg-blur-sm p-8 font-dancing text-6xl rounded-xl w-3/12 space-y-4">
-                    <h5 class="font-dancing">3. Color Scheme</h5>
+                <div class="flex flex-col bg-black/85 bg-blur-sm xl:p-8 font-dancing p-3 text-2xl xl:text-6xl rounded-xl w-9/12 xl:w-3/12 space-y-4">
+                    <h5>3. Color Scheme</h5>
                     <p class="w-full">
                         Color Schemes are limited on current stocks of yarn.
                     </p>
@@ -52,7 +53,7 @@ handle = "Catalog\Product"
 
         <div class="absolute inset-0 bg-black/10 backdrop-blur-sm"></div>
     </div>
-    <div class="w-8/12 mx-auto flex flex-row justify-around [&>*:nth-child(1)]:bg-mom-teal [&>*:nth-child(3n)]:bg-mom-pink">
+    <div class="w-full xl:w-8/12 xl:mx-auto flex flex-col place-items-center xl:flex-row xl:justify-around [&>*:nth-child(1)]:bg-mom-teal [&>*:nth-child(3n)]:bg-mom-pink">
         {% for product in products %}
             {%
                 partial 'cards/vert-card.htm'
@@ -63,6 +64,5 @@ handle = "Catalog\Product"
                 bgColor='bg-mom-navy'
             %}
         {% endfor %}
-
     </div>
 </section>
