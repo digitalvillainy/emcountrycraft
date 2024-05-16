@@ -1,0 +1,22 @@
+uuid: b7781fe6-09e7-4619-83f4-0687133adb73
+handle: Pages\About
+type: stream
+name: About
+drafts: false
+
+navigation:
+    parent: Pages\Home
+    icon: icon-user
+    order: 10
+
+fields:
+    name:
+        label: Name
+        type: text
+    about:
+        label: About Text
+        type: textarea
+    profile_pic:
+        label: Profile Pic
+        type: mediafinder
+        mode: image

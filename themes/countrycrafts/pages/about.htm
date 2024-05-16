@@ -1,11 +1,14 @@
-##
-meta_title = "About Page | Welcome to Em's Country Crafts!"
-title = "About"
-layout = "default"
 url = "/about"
+layout = "default"
+title = "About"
+meta_title = "About Page | Welcome to Em's Country Crafts!"
+
+[collection About]
+handle = "Pages\About"
 ==
 <section class="flex flex-col space-y-16 my-16 place-items-center">
     <h1 class="text-5xl text-center text-mom-red font-dancing">About</h1>
+    {{About[0].body}}
     {% partial 'cards/post-card.htm'
         title='Emily Rodriguez'
         img='assets/images/handcrafted.jpg'
