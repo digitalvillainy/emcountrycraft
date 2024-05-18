@@ -1,0 +1,26 @@
+url = "/store/search"
+layout = "default"
+title = "Store Search"
+meta_title = "Store Search | Welcome to Em's Country Crafts!"
+==
+{% set searchTerm = get('term')|term %}
+{% set products = Catalog.searchWhere(searchTerm, ['title', 'content']).paginate(2) %}
+{% put pageTitle = searchTerm ~ ' - Search Results' %}
+
+<section class="flex flex-col space-y-16 my-16 place-items-center">
+    <h1 class="text-5xl text-center text-mom-red font-dancing">
+        {{ searchTerm - Search Results }}
+    </h1>
+    <div class="flex flex-col space-y-16 w-10/12 mx-auto lg:w-full place-items-center [&>*:nth-child(even)]:bg-red-700">
+        {% for post in posts %}
+        {% partial 'cards/hori-card.htm'
+            title=post.title
+            text=post.featured_text
+            img=post.preview_image.path
+            link=['Read More...', post.slug]
+            bgColor='bg-teal-500'
+        %}
+        {% endfor %}
+    </div>
+    {{posts.links|raw}}
+</section>
