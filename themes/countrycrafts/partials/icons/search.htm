@@ -4,6 +4,7 @@
         x-cloak
         @click.self="open = !open; $nextTick(()=> { $refs.input.focus(); }); "
         @click.away="open = false"
+        @key.enter="$refs.input.submit()"
         class="bg-white/20 backdrop-blur-sm p-2 rounded-xl m-2 cursor-pointer flex flex-row-reverse place-items-center justify-between ml-3 mr-5 absolute z-10">
         <svg
             width="24"
@@ -22,13 +23,15 @@
                 </clipPath>
             </defs>
         </svg>
-        <div x-show="open" class="ml-3 mr-5 w-11/12">
+        <form action="{{ 'store/search'|page }}" method="GET" x-show="open" class="ml-3 mr-5 w-11/12">
             <input
                 type="text"
+                name="term"
                 x-ref="input"
-                class="h-11 w-full rounded-md text-base text-black font-sans pl-2"
                 x-model="search"
+                placeholder="Search Products..."
+                class="h-11 w-full rounded-md text-base text-black font-sans pl-2"
             />
-        </div>
+        </form>
     </div>
 </div>
