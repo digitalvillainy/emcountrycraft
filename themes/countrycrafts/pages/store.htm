@@ -11,12 +11,12 @@ handle = "Catalog\Product"
     <h1 class="text-5xl text-center text-mom-red font-dancing">Store</h1>
     <div class="flex flex-wrap flex-row justify-evenly w-full lg:w-6/12 gap-8 mx-auto [&>*:nth-child(2n)]:bg-mom-navy [&>*:nth-child(3n)]:bg-mom-red">
         {% for product in products %}
-            {%
-                partial 'cards/vert-card.htm'
+            {% set url = "/store/item/#{product.slug}" %}
+            {% partial 'cards/vert-card.htm'
                 title=product.title
                 text=product.featured_text
                 img=product.product_image[0].path
-                link=['Purchase', product.slug]
+                link=['Purchase', url]
                 bgColor='bg-mom-teal'
             %}
         {% endfor %}

@@ -9,29 +9,36 @@ handle = "Catalog\Product"
 [collection Category]
 handle = "Catalog\Category"
 ==
-{% set searchTerm = get('term')|trim %}
-{% set test = Catalog.get() %}
-{% set products = Catalog.searchWhere(searchTerm, ['title', 'name']).paginate(2) %}
-{% set categories = Category.searchWhere(searchTerm, ['title']).paginate(2) %}
-{% set catalogs = products|length != 0 ? products : categories %}
-{% put pageTitle = searchTerm ~ ' - Search Results' %}
+<?
+use Tailor\Models\EntryRecord;
 
+
+function onInit() {
+    $searchTerm = get('term');
+    $records = EntryRecord::inSection('Catalog\Product')->get();
+    $this['catalogs'] = $records->filter(function($item){
+        return $item['title'] === get('term');
+    });
+}
+?>
+==
 
 <section class="flex flex-col space-y-16 my-16 place-items-center">
     <h1 class="text-5xl text-center text-mom-red font-dancing">
         Search Results: {{ searchTerm }}
     </h1>
-    <div class="flex flex-col space-y-16 w-10/12 mx-auto lg:w-full place-items-center [&>*:nth-child(even)]:bg-red-700">
-        {{ dd(products) }}
-
+    <div class="flex flex-col space-y-16 w-10/12 mx-auto lg:w-full place-items-center [&>*:nth-child(even)]:bg-mom-red">
+        {{dd(catalogs)}}
         {% for catalog in catalogs %}
-        {% partial 'cards/hori-card.htm'
-            title=catalog.title
-            text=catalog.featured_text
-            img=catalog.product_image[0].path
-            link=['Purchase', product.slug]
-            bgColor='bg-mom-teal'
-        %}
+            {% set url = "/store/item/#{catalog.slug}" %}
+
+            {% partial 'cards/hori-card.htm'
+                title=catalog.title
+                text=catalog.featured_text
+                img=catalog.product_image[0].path
+                link=['Purchase', url.slug]
+                bgColor='bg-mom-teal'
+            %}
         {% endfor %}
     </div>
     {{posts.links|raw}}

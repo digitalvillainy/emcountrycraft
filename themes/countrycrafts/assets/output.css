@@ -1183,6 +1183,10 @@ video {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
+.filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
 .backdrop-blur-md {
   --tw-backdrop-blur: blur(12px);
   -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
@@ -1511,6 +1515,11 @@ video {
 }
 
 .\[\&\>\*\:nth-child\(3n\)\]\:bg-mom-red>*:nth-child(3n) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(155 38 44 / var(--tw-bg-opacity));
+}
+
+.\[\&\>\*\:nth-child\(even\)\]\:bg-mom-red>*:nth-child(even) {
   --tw-bg-opacity: 1;
   background-color: rgb(155 38 44 / var(--tw-bg-opacity));
 }

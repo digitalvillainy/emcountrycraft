@@ -16,39 +16,47 @@ navigation:
 
 fields:
     Name:
+        tab: Manage
         label: Name
         type: text
         span: row
 
     description:
+        tab: Manage
         label: Description
         type: textarea
         span: row
 
     featured_text:
+        tab: Manage
         label: Featured Text
         type: text
         span: row
 
     product_price:
+        tab: Manage
         label: Price
         type: number
         span: row
 
     Stock:
+        tab: Manage
         label: Stock
         type: number
         span: row
         default: 1
 
     product_image:
+        tab: Manage
         label: Product Image
         type: fileupload
         mode: image
         maxFiles: 4
 
-    categories:
-        label: Categories
+    category:
+        tab: Manage
+        label: Category
         commentAbove: 'Select categories the product belongs to'
         type: entries
+        maxItems: 1
         source: Catalog\Category
