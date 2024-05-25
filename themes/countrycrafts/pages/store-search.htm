@@ -12,23 +12,62 @@ handle = "Catalog\Category"
 <?
 use Tailor\Models\EntryRecord;
 
+function fuzzySearch($searchTerm, $payloads) {
+    $this['searchTerms'] = explode(' ', $searchTerm);
+
+    foreach ($this['searchTerms'] as $term) {
+        foreach ($payloads as $payload) {
+            if (str_contains($payload->title, $term)) {
+                $this['catalogs'] = $payload;
+            }
+        }
+    }
+}
 
 function onInit() {
-    $searchTerm = get('term');
-    $records = EntryRecord::inSection('Catalog\Product')->get();
-    $this['catalogs'] = $records->filter(function($item){
+    $this['catalogs'] = [];
+    $this['category'] = [];
+
+    $this['records'] = EntryRecord::inSection('Catalog\Product')->get();
+
+    $this['catalogs'] = $this['records']->filter(function($item){
         return $item['title'] === get('term');
     });
+
+    if(count($this['catalogs']) === 0){
+        $this['term'] = str_contains(get('term'), ' ') ? str_replace(' ', '-', get('term')) : get('term');
+        $this['category'] = EntryRecord::inSection('Catalog\Category')
+            ->get()
+            ->filter(function($item){
+                return $item['slug'] === strtolower($this['term']);
+        })->first();
+    }
+
+    if($this['category'] !== null && count($this['catalogs']) === 0){
+        $this['catalogs'] = $this['records']->filter(function($item){
+            return $item['category_id'] === $this['category']['id'];
+        });
+    }
+
+    if(empty($this['category'])) {
+        $this['catalogs'] = EntryRecord::inSection('Catalog\Product')->paginate(4);
+        $this['badResults'] = true;
+    }
 }
 ?>
 ==
 
 <section class="flex flex-col space-y-16 my-16 place-items-center">
     <h1 class="text-5xl text-center text-mom-red font-dancing">
-        Search Results: {{ searchTerm }}
+        Search Results: {{ term }}
     </h1>
     <div class="flex flex-col space-y-16 w-10/12 mx-auto lg:w-full place-items-center [&>*:nth-child(even)]:bg-mom-red">
-        {{dd(catalogs)}}
+        {% if badResults %}
+            <p class="text-mom-red text-xl">
+                There were no results for: {{ term }} - please review the below
+            </p>
+        {% endif %}
+
         {% for catalog in catalogs %}
             {% set url = "/store/item/#{catalog.slug}" %}
 
@@ -41,5 +80,7 @@ function onInit() {
             %}
         {% endfor %}
     </div>
-    {{posts.links|raw}}
+    {% if badResults %}
+        {{catalogs.links|raw}}
+    {% endif %}
 </section>

@@ -1523,8 +1523,3 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(155 38 44 / var(--tw-bg-opacity));
 }
-
-.\[\&\>\*\:nth-child\(even\)\]\:bg-red-700>*:nth-child(even) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(185 28 28 / var(--tw-bg-opacity));
-}
