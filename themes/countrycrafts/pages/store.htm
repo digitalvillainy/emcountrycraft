@@ -6,10 +6,20 @@ meta_title = "Store Page | Welcome to Em's Country Crafts!"
 [collection Catalog]
 handle = "Catalog\Product"
 ==
+<?
+use Tailor\Models\EntryRecord;
+function onInit(){
+    $this['tags'] = EntryRecord::inSection('Catalog\Category')->get();
+}
+?>
+==
 <section class="flex flex-col space-y-16 my-16 place-items-center">
     {% set products = Catalog.paginate(8) %}
     <h1 class="text-5xl text-center text-mom-red font-dancing">Store</h1>
     <div class="flex flex-wrap flex-row justify-evenly w-full lg:w-6/12 gap-8 mx-auto [&>*:nth-child(2n)]:bg-mom-navy [&>*:nth-child(3n)]:bg-mom-red">
+        {% partial 'filters/category-filters.htm'
+            categories=tags
+        %}
         {% for product in products %}
             {% set url = "/store/item/#{product.slug}" %}
             {% partial 'cards/vert-card.htm'

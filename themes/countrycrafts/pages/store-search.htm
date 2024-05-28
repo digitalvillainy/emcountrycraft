@@ -27,8 +27,10 @@ function fuzzySearch($searchTerm, $payloads) {
 function onInit() {
     $this['catalogs'] = [];
     $this['category'] = [];
+    $this['badResults'] = false;
 
     $this['records'] = EntryRecord::inSection('Catalog\Product')->get();
+    $this['tags'] = EntryRecord::inSection('Catalog\Category')->get();
 
     $this['catalogs'] = $this['records']->filter(function($item){
         return $item['title'] === get('term');
@@ -36,9 +38,7 @@ function onInit() {
 
     if(count($this['catalogs']) === 0){
         $this['term'] = str_contains(get('term'), ' ') ? str_replace(' ', '-', get('term')) : get('term');
-        $this['category'] = EntryRecord::inSection('Catalog\Category')
-            ->get()
-            ->filter(function($item){
+        $this['category'] = $this['tags']->filter(function($item){
                 return $item['slug'] === strtolower($this['term']);
         })->first();
     }
@@ -63,9 +63,12 @@ function onInit() {
     </h1>
     <div class="flex flex-col space-y-16 w-10/12 mx-auto lg:w-full place-items-center [&>*:nth-child(even)]:bg-mom-red">
         {% if badResults %}
-            <p class="text-mom-red text-xl">
+            <div class="text-mom-red text-xl w-6/12 text-center">
                 There were no results for: {{ term }} - please review the below
-            </p>
+                {% partial 'filters/category-filters.htm'
+                    categories=tags
+                %}
+            </div>
         {% endif %}
 
         {% for catalog in catalogs %}
