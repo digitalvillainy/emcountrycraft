@@ -805,6 +805,10 @@ video {
   width: 25%;
 }
 
+.w-5\/12 {
+  width: 41.666667%;
+}
+
 .flex-grow {
   flex-grow: 1;
 }
@@ -903,6 +907,30 @@ video {
   --tw-space-y-reverse: 0;
   margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}
+
+.space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1rem * var(--tw-space-x-reverse));
+  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-x-8 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(2rem * var(--tw-space-x-reverse));
+  margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-x-10 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(2.5rem * var(--tw-space-x-reverse));
+  margin-left: calc(2.5rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-x-12 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(3rem * var(--tw-space-x-reverse));
+  margin-left: calc(3rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .rounded-2xl {
@@ -1279,6 +1307,11 @@ video {
   padding: 0.5rem;
 }
 
+.\*\:mx-8 > * {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
 .hover\:bg-mom-teal:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(50 131 125 / var(--tw-bg-opacity));
@@ -1571,4 +1604,9 @@ video {
 .\[\&\>\*\:nth-child\(even\)\]\:bg-mom-red>*:nth-child(even) {
   --tw-bg-opacity: 1;
   background-color: rgb(155 38 44 / var(--tw-bg-opacity));
+}
+
+.\[\&\>\*\]\:mx-8>* {
+  margin-left: 2rem;
+  margin-right: 2rem;
 }

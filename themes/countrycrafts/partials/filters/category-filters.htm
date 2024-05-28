@@ -1,5 +1,8 @@
 <section class="flex flex-row justify-evenly place-items-center w-full py-3">
     <p class="font-bold">Categories:</p>
+    <a class="p-5 bg-mom-yellow shadow-2xl hover:bg-mom-teal hover:text-white rounded-lg" href="/store">
+        All Items
+    </a>
     {% for category in categories %}
         <a class="p-5 bg-mom-yellow shadow-2xl hover:bg-mom-teal hover:text-white rounded-lg" href="/store/search?term={{category.slug}}">
             {{category.title}}
