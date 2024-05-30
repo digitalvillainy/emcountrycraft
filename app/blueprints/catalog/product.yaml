@@ -33,11 +33,17 @@ fields:
         type: text
         span: row
 
+    featured_item:
+        tab: Manage
+        label: Featured Item?
+        type: checkbox
+        span: right
+
     product_price:
         tab: Manage
         label: Price
         type: number
-        span: row
+        span: left
 
     Stock:
         tab: Manage
