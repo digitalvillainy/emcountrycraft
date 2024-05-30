@@ -72,7 +72,7 @@ function onInit() {
         {% partial 'filters/category-filters.htm' categories=tags %}
         </div>
 
-        <div class="flex flex-wrap flex-row justify-between place-items-center w-5/12 mx-auto [&>*:nth-child(even)]:bg-mom-red [&>*]:mx-8">
+        <div class="flex flex-wrap flex-row place-items-center w-5/12 mx-auto [&>*:nth-child(even)]:bg-mom-red [&>*]:mx-8">
             {% for catalog in catalogs%}
                 {% set url = "/store/item/#{catalog.slug}" %}
                 {% partial 'cards/vert-card.htm'
