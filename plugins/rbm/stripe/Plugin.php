@@ -29,7 +29,7 @@ class Plugin extends PluginBase
     /**
      * register method, called when the plugin is first registered.
      */
-    public function register()
+    public function register(): void
     {
         //
     }
@@ -37,7 +37,7 @@ class Plugin extends PluginBase
     /**
      * boot method, called right before the request route.
      */
-    public function boot()
+    public function boot(): void
     {
         //
     }
@@ -45,10 +45,8 @@ class Plugin extends PluginBase
     /**
      * registerComponents used by the frontend.
      */
-    public function registerComponents()
+    public function registerComponents(): array
     {
-        return []; // Remove this line to activate
-
         return [
             'RBM\Stripe\Components\MyComponent' => 'myComponent',
         ];
@@ -57,10 +55,8 @@ class Plugin extends PluginBase
     /**
      * registerPermissions used by the backend.
      */
-    public function registerPermissions()
+    public function registerPermissions(): array
     {
-        return []; // Remove this line to activate
-
         return [
             'rbm.stripe.some_permission' => [
                 'tab' => 'stripe',
@@ -72,14 +68,12 @@ class Plugin extends PluginBase
     /**
      * registerNavigation used by the backend.
      */
-    public function registerNavigation()
+    public function registerNavigation(): array
     {
-        return []; // Remove this line to activate
-
         return [
             'stripe' => [
-                'label' => 'stripe',
-                'url' => Backend::url('rbm/stripe/mycontroller'),
+                'label' => '',
+                'url' => Backend::url('rbm/stripe/stripepay'),
                 'icon' => 'icon-cc-stripe',
                 'permissions' => ['rbm.stripe.*'],
                 'order' => 500,

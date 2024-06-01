@@ -17,6 +17,8 @@ class StripePay extends Controller
         \Backend\Behaviors\ListController::class,
     ];
 
+    public $pageTitle = 'Stripe Payments | From Red Banner Media, LLC';
+
     /**
      * @var string formConfig file
      */
@@ -31,6 +33,15 @@ class StripePay extends Controller
      * @var array required permissions
      */
     public $requiredPermissions = ['rbm.stripe.stripepay'];
+
+
+    /**
+     * Test function
+     */
+    public function index(): void
+    {
+        // code ...
+    }
 
     /**
      * __construct the controller
