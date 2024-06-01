@@ -3,7 +3,7 @@
     <form action="#" method="post" class="my-5 d-flex justify-content-between">
         <div>
             <label for="stripeApiKey" class="me-4">Stripe API Key</label>
-            <input type="password" id="stripeApiKey" name="stripeApiKey"/>
+            <input type="password" id="stripeApiKey" name="stripeApiKey" value="<?= $stripe_api_key ?>"/>
         </div>
         <div>
             <input type="button" class="bg-danger border rounded" value="Delete API Key">

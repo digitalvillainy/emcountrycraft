@@ -36,11 +36,13 @@ class StripePay extends Controller
 
 
     /**
-     * Test function
+     * Initial function that happens upon page load in backend
      */
     public function index(): void
     {
-        // code ...
+        //TODO: Test if the rbm_stripe_configs table has a value in stripe_api_key, then enter that key appear in view.
+        //TODO: remove the 'TestValueHere' replace with above strategy.
+        $this->vars['stripe_api_key'] = 'TestValueHere';
     }
 
     /**
