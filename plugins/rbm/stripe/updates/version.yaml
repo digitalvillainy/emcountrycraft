@@ -1,0 +1,10 @@
+v1.0.1: First version of stripe
+v1.0.2:
+    - Defined models
+    - create_configs_table.php
+v1.0.3:
+    - Added soft delete to table
+    - create_configs_table.php
+v1.0.3.5:
+    - Needed to fix issues with migration
+    - create_configs_table.php
