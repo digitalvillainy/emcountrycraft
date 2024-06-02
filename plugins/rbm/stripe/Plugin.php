@@ -48,7 +48,7 @@ class Plugin extends PluginBase
     public function registerComponents(): array
     {
         return [
-            'RBM\Stripe\Components\MyComponent' => 'myComponent',
+            'RBM\Stripe\Components\StripeApiForm' => 'StripeApiForm',
         ];
     }
 
