@@ -33,6 +33,10 @@ class StripePay extends Controller
      */
     public $requiredPermissions = ['rbm.stripe.stripepay'];
 
+    /**
+     * method that for the plugin form.
+     * updates or inserts to rbm_stripe_configs table
+    */
     public function onNewKey(): void
     {
         $db = Db::table('rbm_stripe_configs');
