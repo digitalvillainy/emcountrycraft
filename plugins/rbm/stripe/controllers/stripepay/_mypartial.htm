@@ -1,1 +1,14 @@
-<p>The answer is <?= $results ?> </p>
+<div id="results">
+    <?php if ($results['success']): ?>
+    <p class="text-success"><?= $results['success'] ?> </p>
+    <?php else: ?>
+    <p class="text-danger"><?= $results['error'] ?> </p>
+    <?php endif ?>
+</div>
+
+<script>
+    // results element will fadeOut after a second
+    setTimeout(() => {
+        $('#results').fadeOut('fast');
+    }, 1000)
+</script>

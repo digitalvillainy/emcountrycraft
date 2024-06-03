@@ -37,20 +37,16 @@ class StripePay extends Controller
 
     public function onNewKey(): void
     {
-        $db = Db::table('rbm_stripe_configs')->get();
-        //TODO: Sanitize the input
-        //TODO: Display error as red or green
+        $db = Db::table('rbm_stripe_configs');
+        $input = input('stripeApiKey');
         //TODO: Have Plugin do checkout page complete stripe transactions
-        if(count($db)){
-            DB::table('rbm_stripe_configs')->update([
-                'stripe_api_key' => input('stripeApiKey')
-            ]);
-            $this->vars['results'] = 'Successfully updated';
+        //TODO: see if you can insert updateOrInsert. Check Laravel Docs
+        if (count($db->get())) {
+            $db->update(['stripe_api_key' => $input]);
         } else {
-            DB::table('rbm_stripe_configs')->insert([
-                'stripe_api_key' => input('stripeApiKey')
-            ]);
+            $db->insert(['stripe_api_key' => $input]);
         }
+        $this->vars['results'] = ['success' => 'Successfully updated'];
     }
 
     /**
@@ -58,9 +54,8 @@ class StripePay extends Controller
      */
     public function index(): void
     {
-        //TODO: Test if the rbm_stripe_configs table has a value in stripe_api_key, then enter that key appear in view.
-        //TODO: remove the 'TestValueHere' replace with above strategy.
-        $this->vars['stripe_api_key'] = 'TestValueHere';
+        $stripeConfig = Db::table('rbm_stripe_configs')->get()->value('stripe_api_key');
+        $this->vars['stripe_api_key'] = strlen($stripeConfig) > 0 ? $stripeConfig : '';
     }
 
     /**
