@@ -1,9 +1,7 @@
 <div id="results">
-    <?php if ($results['success']): ?>
-    <p class="text-success"><?= $results['success'] ?> </p>
-    <?php else: ?>
-    <p class="text-danger"><?= $results['error'] ?> </p>
-    <?php endif ?>
+    <p class="<?= str_contains($results['status'], 'Successfully') ? 'text-success' : 'text-danger'; ?>">
+        <?= $results['status']; ?>
+    </p>
 </div>
 
 <script>

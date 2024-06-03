@@ -17,12 +17,10 @@ class StripePay extends Controller
         \Backend\Behaviors\FormController::class,
         \Backend\Behaviors\ListController::class,
     ];
-
     public $pageTitle = 'Stripe Payments | From Red Banner Media, LLC';
 
     /**
-     * @var string formConfig file
-     */
+     * @var string formConfig file */
     public string $formConfig = 'config_form.yaml';
 
     /**
@@ -39,14 +37,14 @@ class StripePay extends Controller
     {
         $db = Db::table('rbm_stripe_configs');
         $input = input('stripeApiKey');
+        $results = 0;
         //TODO: Have Plugin do checkout page complete stripe transactions
-        //TODO: see if you can insert updateOrInsert. Check Laravel Docs
         if (count($db->get())) {
-            $db->update(['stripe_api_key' => $input]);
+            $results = $db->update(['stripe_api_key' => $input]);
         } else {
-            $db->insert(['stripe_api_key' => $input]);
+            $results = $db->insert(['stripe_api_key' => $input]);
         }
-        $this->vars['results'] = ['success' => 'Successfully updated'];
+        $this->vars['results']['status'] = $results !== 0 ? 'Successfully updated' : 'Unsuccessful Update';
     }
 
     /**

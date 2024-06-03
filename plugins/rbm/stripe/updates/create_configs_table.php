@@ -21,7 +21,7 @@ return new class extends Migration
         Schema::create('rbm_stripe_configs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('stripe_api_key')->nullable();
-            $table->timestamps();
+            $table->dateTime('updated_at')->useCurrent();
             $table->softDeletes();
         });
     }
