@@ -4,6 +4,8 @@ namespace RBM\Stripe\Controllers;
 
 use Backend\Classes\Controller;
 use BackendMenu;
+use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -33,16 +35,20 @@ class StripePay extends Controller
      */
     public $requiredPermissions = ['rbm.stripe.stripepay'];
 
+    public function boot(): void
+    {
+    }
+
     /**
      * method that for the plugin form.
      * updates or inserts to rbm_stripe_configs table
-    */
-    public function onNewKey(): void
+     */
+    public function onStoreStripeApiKey(): void
     {
         $db = Db::table('rbm_stripe_configs');
-        $input = input('stripeApiKey');
+        $input = Crypt::encryptString(input('stripeApiKey'));
         $results = 0;
-        //TODO: Have Plugin do checkout page complete stripe transactions
+
         if (count($db->get())) {
             $results = $db->update(['stripe_api_key' => $input]);
         } else {
@@ -51,8 +57,22 @@ class StripePay extends Controller
         $this->vars['results']['status'] = $results !== 0 ? 'Successfully updated' : 'Unsuccessful Update';
     }
 
+    public function getStripeApiKey(): string
+    {
+        $db = Db::table('rbm_stripe_configs')
+            ->get()
+            ->value('stripe_api_key');
+
+        try {
+            return Crypt::decryptString($db);
+        } catch (DecryptException $e) {
+            throw $e;
+        }
+    }
+
     /**
      * Initial function that happens upon page load in backend
+     *
      */
     public function index(): void
     {

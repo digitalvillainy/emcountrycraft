@@ -3,6 +3,7 @@ description = "Default layout"
 ==
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>{{ this.page.meta_title}}</title>
     <meta name="description" content="{{ this.page.meta_description }}">
@@ -16,24 +17,26 @@ description = "Default layout"
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.8/dist/cdn.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
 </head>
+
 <body class="flex flex-col h-screen">
 
-<!-- Header/Navigation -->
-<header id="layout-header" class="flex flex-col">
-    {% partial 'nav/navigation' %}
-</header>
+    <!-- Header/Navigation -->
+    <header id="layout-header" class="flex flex-col">
+        {% partial 'nav/navigation' %}
+    </header>
 
-<!--TODO: Add Flash message later-->
+    <!--TODO: Add Flash message later-->
 
-<!-- Content -->
-<main id="layout-content" class="flex flex-col flex-grow my-5">
-    {% page %}
-</main>
+    <!-- Content -->
+    <main id="layout-content" class="flex flex-col flex-grow my-5">
+        {% page %}
+    </main>
 
-<!-- Footer -->
-<footer id="layout-footer">
-    {% partial 'foot/footer' %}
-</footer>
+    <!-- Footer -->
+    <footer id="layout-footer">
+        {% partial 'foot/footer' %}
+    </footer>
 
 </body>
+
 </html>

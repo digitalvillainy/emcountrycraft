@@ -9,4 +9,4 @@ columns:
     stripe_api_key:
         label: Stripe API Key
         searchable: true
-        type: text
+        type: varchar

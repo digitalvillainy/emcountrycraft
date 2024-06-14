@@ -7,20 +7,23 @@ meta_title = "Store Item Page | Welcome to Em's Country Crafts!"
 handle = "Catalog\Product"
 identifier = "{{ :slug }}"
 value = "{{ :slug }}"
+
 ==
 {# TODO: Fix issues with Images #}
 <section class="flex flex-col space-y-16 my-16 place-items-center">
     <h1 class="text-5xl text-center text-mom-red font-dancing">Store - {{Product.title}}</h1>
     {% partial 'cards/purchase-card'
-        title=Product.title
-        text=Product.description
-        imgs=Product.product_image
-        bgColor='bg-teal-500'
+    title=Product.title
+    text=Product.description
+    imgs=Product.product_image
+    bgColor='bg-mom-red'
     %}
+
     {% partial 'cards/commission-card'
-        title='Want something custom?'
-        text='Do you want a scarf, or a hat? Or something completely unique? I love new challegnes! Contact today to inquire about custom orders.'
-        img='assets/images/ContactBanner.jpeg'
-        bgColor='bg-stone-500'
+    title='Want something custom?'
+    text='Do you want a scarf, or a hat? Or something completely unique? I love new challegnes! Contact today to inquire
+    about custom orders.'
+    img='assets/images/ContactBanner.jpeg'
+    bgColor='bg-stone-500'
     %}
 </section>
