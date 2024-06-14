@@ -57,6 +57,28 @@ class StripePay extends Controller
         $this->vars['results']['status'] = $results !== 0 ? 'Successfully updated' : 'Unsuccessful Update';
     }
 
+    public function sendStripeRequest(): void
+    {
+        // TODO: add in a real api key you idiot
+        $stripeKey = $this->getStripeApiKey();
+        \Stripe\Stripe::setApiKey($stripeKey);
+        header('Content-Type: application/json');
+        $CURRENT_DOMAIN = 'http://localhost:8000';
+
+        $checkout_session = \Stripe\Checkout\Session::create([
+            'line_items' => [[
+                'price' => '15',
+                'quantity' => 1,
+            ]],
+            'mode' => 'payment',
+            'success_url' => $CURRENT_DOMAIN . '/',
+            'cancel_url' => $CURRENT_DOMAIN . '/about',
+        ]);
+
+        header('HTTP/1.1 303 See Other');
+        header('Location: ' . $checkout_session->url);
+    }
+
     public function getStripeApiKey(): string
     {
         $db = Db::table('rbm_stripe_configs')
