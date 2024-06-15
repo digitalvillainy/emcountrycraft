@@ -59,10 +59,10 @@ class StripePay extends Controller
 
     public function sendStripeRequest(): string
     {
-        // TODO: add in a real api key you idiot
         $stripeKey = $this->getStripeApiKey();
         \Stripe\Stripe::setApiKey($stripeKey);
         header('Content-Type: application/json');
+        //TODO: Update with production url
         $CURRENT_DOMAIN = 'http://localhost:8000';
 
         $checkout_session = \Stripe\Checkout\Session::create([
@@ -71,12 +71,10 @@ class StripePay extends Controller
                 'quantity' => 1,
             ]],
             'mode' => 'payment',
-            'success_url' => $CURRENT_DOMAIN . '/',
-            'cancel_url' => $CURRENT_DOMAIN . '/about',
+            'success_url' => $CURRENT_DOMAIN . '/success',
+            'cancel_url' => $CURRENT_DOMAIN . '/cancel',
         ]);
 
-        header('HTTP/1.1 303 See Other');
-        header('Location: ' . $checkout_session->url);
         return $checkout_session->url;
     }
 
