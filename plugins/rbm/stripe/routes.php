@@ -9,3 +9,15 @@ Route::post(
         }
     }
 );
+
+//TODO: Create cart functionality
+Route::post(
+    '/api_rbm_stripe/cart',
+    function (): string {
+        try {
+            return (new \RBM\Stripe\Controllers\StripePay)->sendStripeRequest();
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
+);

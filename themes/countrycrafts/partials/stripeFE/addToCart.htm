@@ -1,0 +1,21 @@
+<section x-data="checkout">
+    <button @click="checkoutItems" class="px-4 py-2 rounded-md bg-mom-teal font-bold text-white cursor-pointer">
+        Add To Cart
+    </button>
+</section>
+<script>
+    // TODO: Example. Update to hit checkout
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('cartCtrl', () => ({
+            async checkoutItems() {
+                await fetch('/api_rbm_stripe/cart', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'}
+                })
+                    .then((response) => response.text())
+                    .then((value) => console.log(value))
+                    .catch((error) => console.error(error));
+            }
+        }));
+    });
+</script>

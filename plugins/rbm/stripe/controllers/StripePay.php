@@ -19,7 +19,7 @@ class StripePay extends Controller
         \Backend\Behaviors\FormController::class,
         \Backend\Behaviors\ListController::class,
     ];
-    public $pageTitle = 'Stripe Payments | From Red Banner Media, LLC';
+    public $pageTitle = 'Stripe Payment Configurator | From Red Banner Media, LLC';
 
     /**
      * @var string formConfig file */
@@ -64,7 +64,7 @@ class StripePay extends Controller
         header('Content-Type: application/json');
         //TODO: Update with production url
         $CURRENT_DOMAIN = 'http://localhost:8000';
-
+        //TODO: get cart from cart controller
         $checkout_session = \Stripe\Checkout\Session::create([
             'line_items' => [[
                 'price' => 'price_1PRmT2Clve5z7JqRejQqddvA',

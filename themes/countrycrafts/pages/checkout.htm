@@ -1,0 +1,23 @@
+url = '/checkout'
+layout = 'default'
+title = 'Checkout Page'
+meta_title = "Checkout | Welcome to Em's Country Crafts!"
+==
+<?
+function onInit(){
+    $this['intros'] = $this->home->get();
+}
+?>
+==
+<section class="flex flex-col space-y-16 my-16 place-items-center">
+    <div class="product">
+        <img src="{{intros[0].banner.path}}" alt="The cover of Stubborn Attachments" />
+        <div class="description">
+            <h3>Stubborn Attachments</h3>
+            <h5>$20.00</h5>
+        </div>
+    </div>
+    <form action="/checkout.php" method="POST">
+        <button type="submit" id="checkout-button">Checkout</button>
+    </form>
+</section>

@@ -47,9 +47,7 @@ class Plugin extends PluginBase
      */
     public function registerComponents(): array
     {
-        return [
-            \RBM\Stripe\Components\StripeCheckout::class => 'StripeCheckout',
-        ];
+        return [];
     }
 
     /**
@@ -72,11 +70,25 @@ class Plugin extends PluginBase
     {
         return [
             'stripe' => [
-                'label' => '',
+                'label' => 'Products config',
                 'url' => Backend::url('rbm/stripe/stripepay'),
                 'icon' => 'icon-cc-stripe',
                 'permissions' => ['rbm.stripe.*'],
                 'order' => 500,
+                'sideMenu' => [
+                    'Stripe API Key' => [
+                        'label' => 'Stripe API Config',
+                        'url' => Backend::url('rbm/stripe/stripepay'),
+                        'icon' => 'icon-key',
+                        'permissions' => ['rbm.stripe.stripepay'],
+                    ],
+                    'products' => [
+                        'label' => 'Product Catalog Builder',
+                        'url' => Backend::url('rbm/stripe/product'),
+                        'icon' => 'icon-cubes',
+                        'permissions' => ['rbm.stripe.product'],
+                    ]
+                ]
             ],
         ];
     }
