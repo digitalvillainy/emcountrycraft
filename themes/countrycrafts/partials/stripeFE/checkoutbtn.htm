@@ -11,8 +11,10 @@
                 await fetch('/api_rbm_stripe/checkout', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'}
-                }).then((response) => response.text()).then(console.log)
-                    .catch(() => console.error('qwerty'));
+                })
+                    .then((response) => response.text())
+                    .then((value) => window.location = value)
+                    .catch((error) => console.error(error));
             }
         }));
     });

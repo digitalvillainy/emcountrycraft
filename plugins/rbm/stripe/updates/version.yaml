@@ -20,3 +20,6 @@ v1.0.5.5:
 v1.0.6:
     - changed length of main column
     - create_configs_table.php
+v1.0.6.1:
+    - changed length of main column
+    - create_configs_table.php

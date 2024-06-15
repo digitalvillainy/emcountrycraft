@@ -57,7 +57,7 @@ class StripePay extends Controller
         $this->vars['results']['status'] = $results !== 0 ? 'Successfully updated' : 'Unsuccessful Update';
     }
 
-    public function sendStripeRequest(): void
+    public function sendStripeRequest(): string
     {
         // TODO: add in a real api key you idiot
         $stripeKey = $this->getStripeApiKey();
@@ -67,7 +67,7 @@ class StripePay extends Controller
 
         $checkout_session = \Stripe\Checkout\Session::create([
             'line_items' => [[
-                'price' => '15',
+                'price' => 'price_1PRmT2Clve5z7JqRejQqddvA',
                 'quantity' => 1,
             ]],
             'mode' => 'payment',
@@ -77,6 +77,7 @@ class StripePay extends Controller
 
         header('HTTP/1.1 303 See Other');
         header('Location: ' . $checkout_session->url);
+        return $checkout_session->url;
     }
 
     public function getStripeApiKey(): string

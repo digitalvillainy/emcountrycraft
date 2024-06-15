@@ -1,12 +1,11 @@
 <?php
 Route::post(
     '/api_rbm_stripe/checkout',
-    function (): array {
+    function (): string {
         try {
-            (new \RBM\Stripe\Controllers\StripePay)->sendStripeRequest();
+            return (new \RBM\Stripe\Controllers\StripePay)->sendStripeRequest();
         } catch (Exception $e) {
             throw $e;
         }
-        return ['status' => 'Ran'];
     }
 );
