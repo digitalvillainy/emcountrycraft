@@ -19,7 +19,6 @@ class StripePay extends Controller
         \Backend\Behaviors\FormController::class,
         \Backend\Behaviors\ListController::class,
     ];
-    public $pageTitle = 'Stripe Payment Configurator | From Red Banner Media, LLC';
 
     /**
      * @var string formConfig file */
@@ -33,7 +32,7 @@ class StripePay extends Controller
     /**
      * @var array required permissions
      */
-    public $requiredPermissions = ['rbm.stripe.stripepay'];
+    public $requiredPermissions = ['Rbm.Stripe.access_product'];
 
     public function boot(): void
     {
@@ -97,6 +96,7 @@ class StripePay extends Controller
      */
     public function index(): void
     {
+        $this->pageTitle = 'Stripe Payment Configurator | From Red Banner Media, LLC';
         $stripeConfig = Db::table('rbm_stripe_configs')->get()->value('stripe_api_key');
         $this->vars['stripe_api_key'] = strlen($stripeConfig) > 0 ? $stripeConfig : '';
     }

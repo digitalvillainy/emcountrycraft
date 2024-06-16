@@ -30,7 +30,7 @@ class Product extends Controller
     /**
      * @var array required permissions
      */
-    public $requiredPermissions = ['rbm.stripe.product'];
+    public $requiredPermissions = ['rbm.stripe.access_product'];
 
     /**
      * Initial function that happens upon page load in backend
@@ -38,7 +38,7 @@ class Product extends Controller
      */
     public function index(): void
     {
-        $this->vars['products'] = '';
+        $this->pageTitle = 'Product Catalog | From Red Banner Media, LLC';
     }
 
     /**
@@ -48,6 +48,6 @@ class Product extends Controller
     {
         parent::__construct();
 
-        BackendMenu::setContext('Rbm.Stripe', 'stripe', 'product');
+        BackendMenu::setContext('RBM.Stripe', 'stripe', 'product');
     }
 }

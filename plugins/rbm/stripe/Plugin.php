@@ -18,36 +18,11 @@ class Plugin extends PluginBase
     public function pluginDetails(): array
     {
         return [
-            'name' => 'Stripe Payments',
+            'name' => 'rbm.stripe',
             'description' => 'A plugin to help with stripe payments.',
-            'author' => 'Red Banner Media, LLC',
-            'icon' => 'icon-cc-stripe',
-            'homepage' => 'https://redbannermedia.com',
+            'author' => 'rbm',
+            'icon' => 'icon-cc-stripe'
         ];
-    }
-
-    /**
-     * register method, called when the plugin is first registered.
-     */
-    public function register(): void
-    {
-        //
-    }
-
-    /**
-     * boot method, called right before the request route.
-     */
-    public function boot(): void
-    {
-        //
-    }
-
-    /**
-     * registerComponents used by the frontend.
-     */
-    public function registerComponents(): array
-    {
-        return [];
     }
 
     /**
@@ -56,9 +31,13 @@ class Plugin extends PluginBase
     public function registerPermissions(): array
     {
         return [
-            'rbm.stripe.some_permission' => [
+            'rbm.stripe.access_stripepay' => [
                 'tab' => 'stripe',
-                'label' => 'Some permission',
+                'label' => 'Access Stripe API Config',
+            ],
+            'rbm.stripe.access_product' => [
+                'tab' => 'stripe',
+                'label' => 'Access Product Catalog Builder',
             ],
         ];
     }
@@ -70,23 +49,23 @@ class Plugin extends PluginBase
     {
         return [
             'stripe' => [
-                'label' => 'Products config',
+                'label' => 'Stripe Config',
                 'url' => Backend::url('rbm/stripe/stripepay'),
                 'icon' => 'icon-cc-stripe',
-                'permissions' => ['rbm.stripe.*'],
+                'permissions' => ['Rbm.Stripe.*'],
                 'order' => 500,
                 'sideMenu' => [
-                    'Stripe API Key' => [
-                        'label' => 'Stripe API Config',
-                        'url' => Backend::url('rbm/stripe/stripepay'),
+                    'stripepay' => [
+                        'label' => 'Stripepay',
                         'icon' => 'icon-key',
-                        'permissions' => ['rbm.stripe.stripepay'],
+                        'url' => Backend::url('rbm/stripe/stripepay'),
+                        'permissions' => ['rbm.stripe.access_stripepay'],
                     ],
-                    'products' => [
-                        'label' => 'Product Catalog Builder',
-                        'url' => Backend::url('rbm/stripe/product'),
+                    'product' => [
+                        'label' => 'Product',
                         'icon' => 'icon-cubes',
-                        'permissions' => ['rbm.stripe.product'],
+                        'url' => Backend::url('rbm/stripe/product'),
+                        'permissions' => ['rbm.stripe.access_product'],
                     ]
                 ]
             ],
