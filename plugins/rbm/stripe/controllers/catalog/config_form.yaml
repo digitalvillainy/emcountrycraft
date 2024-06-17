@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Catalog
+
+# Model Form Field configuration
+form: $/rbm/stripe/models/catalog/fields.yaml
+
+# Model Class name
+modelClass: Rbm\Stripe\Models\Catalog
+
+# Default redirect location
+defaultRedirect: rbm/stripe/catalog
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: rbm/stripe/catalog/update/:id
+    redirectClose: rbm/stripe/catalog
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: rbm/stripe/catalog
+    redirectClose: rbm/stripe/catalog
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title

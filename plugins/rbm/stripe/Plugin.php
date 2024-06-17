@@ -37,6 +37,14 @@ class Plugin extends PluginBase
             ],
             'rbm.stripe.access_product' => [
                 'tab' => 'stripe',
+                'label' => 'Access Product Configurator',
+            ],
+            'rbm.stripe.access_category' => [
+                'tab' => 'stripe',
+                'label' => 'Access Product Category Builder',
+            ],
+            'rbm.stripe.access_catalog' => [
+                'tab' => 'stripe',
                 'label' => 'Access Product Catalog Builder',
             ],
         ];
@@ -49,23 +57,35 @@ class Plugin extends PluginBase
     {
         return [
             'stripe' => [
-                'label' => 'Stripe Config',
+                'label' => 'Config',
                 'url' => Backend::url('rbm/stripe/stripepay'),
-                'icon' => 'icon-cc-stripe',
+                'icon' => 'icon-barcode',
                 'permissions' => ['Rbm.Stripe.*'],
                 'order' => 500,
                 'sideMenu' => [
                     'stripepay' => [
-                        'label' => 'Stripepay',
+                        'label' => 'Stripe API Key',
                         'icon' => 'icon-key',
                         'url' => Backend::url('rbm/stripe/stripepay'),
                         'permissions' => ['rbm.stripe.access_stripepay'],
                     ],
                     'product' => [
-                        'label' => 'Product',
-                        'icon' => 'icon-cubes',
+                        'label' => 'Product Config',
+                        'icon' => 'icon-cog',
                         'url' => Backend::url('rbm/stripe/product'),
                         'permissions' => ['rbm.stripe.access_product'],
+                    ],
+                    'category' => [
+                        'label' => 'Product Categories',
+                        'icon' => 'icon-tags',
+                        'url' => Backend::url('rbm/stripe/category'),
+                        'permissions' => ['rbm.stripe.access_category'],
+                    ],
+                    'catalog' => [
+                        'label' => 'Product Catalog',
+                        'icon' => 'icon-book',
+                        'url' => Backend::url('rbm/stripe/catalog'),
+                        'permissions' => ['rbm.stripe.access_catalog'],
                     ]
                 ]
             ],

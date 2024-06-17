@@ -6,11 +6,11 @@ use BackendMenu;
 use Backend\Classes\Controller;
 
 /**
- * Product Backend Controller
+ * Catalog Backend Controller
  *
  * @link https://docs.octobercms.com/3.x/extend/system/controllers.html
  */
-class Product extends Controller
+class Catalog extends Controller
 {
     // public $implement = [
     //     \Backend\Behaviors\FormController::class,
@@ -30,7 +30,7 @@ class Product extends Controller
     /**
      * @var array required permissions
      */
-    public $requiredPermissions = ['rbm.stripe.access_product'];
+    public $requiredPermissions = ['rbm.stripe.access_catalog'];
 
     /**
      * Initial function that happens upon page load in backend
@@ -38,7 +38,7 @@ class Product extends Controller
      */
     public function index(): void
     {
-        $this->pageTitle = 'Product Configuration | From Red Banner Media, LLC';
+        $this->pageTitle = 'Product Catalog | From Red Banner Media, LLC';
     }
 
     /**
@@ -48,6 +48,6 @@ class Product extends Controller
     {
         parent::__construct();
 
-        BackendMenu::setContext('RBM.Stripe', 'stripe', 'product');
+        BackendMenu::setContext('RBM.Stripe', 'stripe', 'catalog');
     }
 }
