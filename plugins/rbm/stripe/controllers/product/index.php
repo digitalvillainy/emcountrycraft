@@ -20,7 +20,7 @@
             <label for="stock">Stock</label>
             <input type="range" name="stock" />
         </div>
-        <div class="my-3 d-flex flex-row">
+        <div class="my-3 d-flex flex-row justify-content-between w-25">
             <label for="featured">Featured Item</label>
             <input type="checkbox" name="featured" />
         </div>
