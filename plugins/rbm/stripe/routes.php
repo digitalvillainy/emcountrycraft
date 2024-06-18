@@ -3,7 +3,7 @@ Route::post(
     '/api_rbm_stripe/checkout',
     function (): string {
         try {
-            return (new \RBM\Stripe\Controllers\StripePay)->sendStripeRequest();
+            return (new \RBM\Stripe\Controllers\Stripe)->sendStripeRequest();
         } catch (Exception $e) {
             throw $e;
         }
@@ -15,7 +15,7 @@ Route::post(
     '/api_rbm_stripe/cart',
     function (): string {
         try {
-            return (new \RBM\Stripe\Controllers\StripePay)->sendStripeRequest();
+            return (new \RBM\Stripe\Controllers\Stripe)->sendStripeRequest();
         } catch (Exception $e) {
             throw $e;
         }

@@ -4,6 +4,7 @@ namespace Rbm\Stripe\Controllers;
 
 use BackendMenu;
 use Backend\Classes\Controller;
+use RBM\Stripe\Controllers\StripePay;
 
 /**
  * Product Backend Controller
@@ -34,15 +35,25 @@ class Product extends Controller
 
     public function onAddProduct(): void
     {
-        $this->vars['form'] = [
-            'name' => 'test',
-            'featured_text' => 'lorem ipsum folores',
-            'price' => '15.50',
-            'stock' => '10',
-            'featured' => true,
-            'product_image' => 'pic.png',
-            'category' => 'shawl'
+        $payload = [
+            'name' => input('name'),
+            'active' => true,
+            'featured_text' => input('featured_text'),
+            'price' => input('price'),
+            'stock' => input('stock'),
+            'featured' => input('featured'),
+            'product_image' => input('product_image'),
+            'category' => input('category')
         ];
+
+        $this->createStripeProduct($payload);
+        $this->vars['results']['status'] = true ? 'Successfully updated' : 'Unsuccessful Update';
+    }
+
+    public function createStripeProduct(array $payload)
+    {
+        $resultingStripeItem = (new Stripe())->createStripeProduct($payload);
+        return $resultingStripeItem;
     }
 
     /**
@@ -52,16 +63,8 @@ class Product extends Controller
     public function index(): void
     {
         $this->pageTitle = 'Product Configuration | From Red Banner Media, LLC';
-        //TODO: filled with test information
-        $this->vars['form'] = [
-            'name' => 'test',
-            'featured_text' => 'lorem ipsum folores',
-            'price' => '15.50',
-            'stock' => '10',
-            'featured' => true,
-            'product_image' => 'pic.png',
-            'category' => 'shawl'
-        ];
+        $this->vars['form'] = '';
+        $this->vars['test'] = '';
     }
 
     /**
