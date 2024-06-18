@@ -35,18 +35,29 @@ class Product extends Controller
 
     public function onAddProduct(): void
     {
+        //Payload for stripe information
         $payload = [
             'name' => input('name'),
             'active' => true,
             'featured_text' => input('featured_text'),
             'price' => input('price'),
             'stock' => input('stock'),
-            'featured' => input('featured'),
             'product_image' => input('product_image'),
-            'category' => input('category')
         ];
 
+        // Send to Stripe
         $this->createStripeProduct($payload);
+        // Send to local DB
+
+        $dbPayload = array_merge(
+            [
+                'featured' => input('featured'),
+                'category' => input('category')
+            ],
+            $payload
+        );
+
+        //send status update to _mypartial
         $this->vars['results']['status'] = true ? 'Successfully updated' : 'Unsuccessful Update';
     }
 
