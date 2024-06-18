@@ -32,6 +32,12 @@ class Category extends Controller
      */
     public $requiredPermissions = ['rbm.stripe.access_category'];
 
+    public function onCategoryAdd()
+    {
+        $input = input('category');
+        //TODO: create db table
+    }
+
     /**
      * Initial function that happens upon page load in backend
      *

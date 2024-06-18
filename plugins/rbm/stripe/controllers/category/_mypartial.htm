@@ -1,0 +1,12 @@
+<div id="results">
+    <p class="<?= str_contains($results['status'], 'Successfully') ? 'text-success' : 'text-danger'; ?>">
+        <?= $results['status']; ?>
+    </p>
+</div>
+
+<script>
+    // results element will fadeOut after a second
+    setTimeout(() => {
+        $('#results').fadeOut('fast');
+    }, 1000)
+</script>

@@ -24,6 +24,11 @@ return new class extends Migration
             $table->text('featured_text');
             $table->tinyInteger('price');
             $table->tinyInteger('stock');
+            $table->index('category_id');
+            $table->foreign('category_id')
+                ->references('id')
+                ->on('rbm_stripe_categories')
+                ->onDelete('cascade');
             //TODO: Fix issues with database
             $table->timestamps();
         });

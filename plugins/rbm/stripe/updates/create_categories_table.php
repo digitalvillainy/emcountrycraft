@@ -1,13 +1,13 @@
 <?php
 
-namespace RBM\Stripe\Updates;
+namespace Rbm\Stripe\Updates;
 
+use Schema;
 use October\Rain\Database\Schema\Blueprint;
 use October\Rain\Database\Updates\Migration;
-use Schema;
 
 /**
- * CreateStripeConfigsTable Migration
+ * CreateCategoriesTable Migration
  *
  * @link https://docs.octobercms.com/3.x/extend/database/structure.html
  */
@@ -18,10 +18,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('rbm_stripe_stripe_configs', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('stripe_api_key')->nullable();
-            $table->timestamps();
+        Schema::create('rbm_stripe_categories', function (Blueprint $table) {
+            $table->id();
+            $table->text('category')->nullable();
+            $table->dateTime('updated_at')->useCurrent();
             $table->softDeletes();
         });
     }
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rbm_stripe_stripe_configs');
+        Schema::dropIfExists('rbm_stripe_categories');
     }
 };
