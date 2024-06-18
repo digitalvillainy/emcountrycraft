@@ -3,7 +3,8 @@
     <p>
         Add products here to create products for your store.
     </p>
-    <form class="w-25">
+    <?= $test ?>
+    <form data-request="onStoreStripeApiKey" data-request-update="{mypartial: '#myDiv' }" class="w-25">
         <div class="my-3 d-flex flex-column">
             <label for="name">Name</label>
             <input type="text" name="name" />

@@ -32,6 +32,19 @@ class Product extends Controller
      */
     public $requiredPermissions = ['rbm.stripe.access_product'];
 
+    public function onAddProduct(): void
+    {
+        $this->vars['form'] = [
+            'name' => 'test',
+            'featured_text' => 'lorem ipsum folores',
+            'price' => '15.50',
+            'stock' => '10',
+            'featured' => true,
+            'product_image' => 'pic.png',
+            'category' => 'shawl'
+        ];
+    }
+
     /**
      * Initial function that happens upon page load in backend
      *
@@ -39,6 +52,16 @@ class Product extends Controller
     public function index(): void
     {
         $this->pageTitle = 'Product Configuration | From Red Banner Media, LLC';
+        //TODO: filled with test information
+        $this->vars['form'] = [
+            'name' => 'test',
+            'featured_text' => 'lorem ipsum folores',
+            'price' => '15.50',
+            'stock' => '10',
+            'featured' => true,
+            'product_image' => 'pic.png',
+            'category' => 'shawl'
+        ];
     }
 
     /**
