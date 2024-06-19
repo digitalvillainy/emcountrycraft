@@ -14,15 +14,10 @@ v1.0.4:
 v1.0.5:
     - Updated the table columns
     - create_configs_table.php
-v1.0.5.5:
-    - Fixed issues with updated_at
-    - create_configs_table.php
 v1.0.6:
     - changed length of main column
     - create_configs_table.php
-v1.0.6.1:
-    - changed length of main column
-    - create_configs_table.php
-v1.0.6.2:
-    - added new navigation page for backend
-    - create_configs_table.php
+v1.0.7:
+    - new tables to be added
+    - create_categories_table.php
+    - create_products_table.php

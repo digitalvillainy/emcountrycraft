@@ -4,6 +4,7 @@ namespace Rbm\Stripe\Controllers;
 
 use BackendMenu;
 use Backend\Classes\Controller;
+use RBM\Stripe\Models\Category as ModelsCategory;
 
 /**
  * Category Backend Controller
@@ -32,11 +33,32 @@ class Category extends Controller
      */
     public $requiredPermissions = ['rbm.stripe.access_category'];
 
-    public function onCategoryAdd()
+    public ModelsCategory $category;
+
+    public function onCategoryAdd(): void
     {
         $input = input('category');
-        //TODO: create db table
+        $results = 0;
+
+        $results = $this->category->createNewCategory($input);
+        $this->vars['categories'] = $this->category->getCategoryTable();
+        $this->vars['results']['status'] = $results !== 0 ? 'Successfully updated' : 'Unsuccessful Update';
     }
+
+    public function onDeleteCategory(): void
+    {
+        $categories = input();
+        foreach ($categories as $key => $value) {
+            $this->category->deleteCategory($key);
+        }
+
+        $results = $this->category->getCategoryTable();
+        if (count($results)) {
+            $this->vars['categories'] = $results;
+        }
+        $this->vars['results']['status'] = $results !== 0 ? 'Successfully updated' : 'Unsuccessful Update';
+    }
+
 
     /**
      * Initial function that happens upon page load in backend
@@ -45,6 +67,10 @@ class Category extends Controller
     public function index(): void
     {
         $this->pageTitle = 'Product Category | From Red Banner Media, LLC';
+        $this->vars['test'] = 'test';
+        $this->vars['categories'] = $this->category->getCategoryTable()->map(function ($category) {
+            return $category->category;
+        });
     }
 
     /**
@@ -53,7 +79,7 @@ class Category extends Controller
     public function __construct()
     {
         parent::__construct();
-
+        $this->category = new ModelsCategory();
         BackendMenu::setContext('RBM.Stripe', 'stripe', 'category');
     }
 }

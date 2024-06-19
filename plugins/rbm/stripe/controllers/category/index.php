@@ -8,31 +8,43 @@
             <input type="submit" value="Add Category" class="bg-primary border rounded" />
         </div>
     </form>
+    <form data-request="onDeleteCategory" data-request-update="{mypartial: '#myDiv' }">
+        <div class="w-50">
+            <table class="table table-striped table-dark table-small">
+                <thead>
+                    <tr>
+                        <th scope="row" class="w-25">
+                            <input type="checkbox" id="selectAll" />
+                            <label>Select</label>
+                        </th>
+                        <th colspan="2">Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($categories as $category) : ?>
+                        <tr>
+                            <th>
+                                <input type="checkbox" name="<?= $category ?>" />
+                            </th>
+                            <td><?= $category ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <button type="submit" class="bg-danger border rounded">Delete Selected</button>
+        </div>
+    </form>
     <div id="myDiv"></div>
-    <!-- TODO: Generate list of categories-->
-    <div class="w-50">
-        <table class="table table-striped table-dark table-small">
-            <thead>
-                <tr>
-                    <th scope="row" class="w-25">
-                        <input type="checkbox" />
-                        <label>Select</label>
-                    </th>
-                    <th colspan="2">Name</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th>
-                        <input type="checkbox" />
-                    </th>
-                    <!-- TODO: Replace "Category" with actual name programmically -->
-                    <td>Category</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div>
-        <button class="bg-danger border rounded">Delete Selected</button>
-    </div>
 </main>
+<script>
+    $('#selectAll').on('click', function(e) {
+        const inputs = document.querySelectorAll('tbody input');
+        if (e.currentTarget.checked === true) {
+            inputs.forEach((input) => input.checked = true);
+        } else {
+            inputs.forEach((input) => input.checked = false);
+        }
+    });
+</script>
