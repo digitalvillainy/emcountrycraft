@@ -4,9 +4,8 @@ namespace RBM\Stripe\Controllers;
 
 use Backend\Classes\Controller;
 use BackendMenu;
-use Illuminate\Contracts\Encryption\DecryptException;
+use RBM\Stripe\Models\Config;
 use Illuminate\Support\Facades\Crypt;
-use Illuminate\Support\Facades\DB;
 
 /**
  * Stripe Pay Backend Controller
@@ -34,6 +33,8 @@ class StripePay extends Controller
      */
     public $requiredPermissions = ['Rbm.Stripe.access_product'];
 
+    public Config $config;
+
     public function boot(): void
     {
     }
@@ -44,14 +45,13 @@ class StripePay extends Controller
      */
     public function onStoreStripeApiKey(): void
     {
-        $db = Db::table('rbm_stripe_configs');
         $input = Crypt::encryptString(input('stripeApiKey'));
         $results = 0;
 
-        if (count($db->get())) {
-            $results = $db->update(['stripe_api_key' => $input]);
+        if (count($this->config->getStripeConfigTable()->get())) {
+            $results = $this->config->updateConfig($input);
         } else {
-            $results = $db->insert(['stripe_api_key' => $input]);
+            $results = $this->config->insertNewConfig($input);
         }
         $this->vars['results']['status'] = $results !== 0 ? 'Successfully updated' : 'Unsuccessful Update';
     }
@@ -63,7 +63,7 @@ class StripePay extends Controller
     public function index(): void
     {
         $this->pageTitle = 'Stripe Payment Configurator | From Red Banner Media, LLC';
-        $stripeConfig = Db::table('rbm_stripe_configs')->get()->value('stripe_api_key');
+        $stripeConfig = $this->config->getConfigKey();
         $this->vars['stripe_api_key'] = strlen($stripeConfig) > 0 ? $stripeConfig : '';
     }
 
@@ -73,7 +73,7 @@ class StripePay extends Controller
     public function __construct()
     {
         parent::__construct();
-
+        $this->config = new Config();
         BackendMenu::setContext('RBM.Stripe', 'stripe', 'stripepay');
     }
 }
