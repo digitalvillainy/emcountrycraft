@@ -8,7 +8,7 @@
             <input type="submit" value="Add Category" class="bg-primary border rounded" />
         </div>
     </form>
-    <form data-request="onDeleteCategory" data-request-update="{mypartial: '#myDiv' }">
+    <form data-request="onDeleteCategory" data-request-update="{categorypartial: '#myDiv' }">
         <div class="w-50">
             <table class="table table-striped table-dark table-small">
                 <thead>
@@ -21,12 +21,15 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- TODO: Find a way to replace this content after data-request is complete -->
                     <?php foreach ($categories as $category) : ?>
                         <tr>
                             <th>
                                 <input type="checkbox" name="<?= $category ?>" />
                             </th>
-                            <td><?= $category ?></td>
+                            <td>
+                                <?= $category ?>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

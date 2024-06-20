@@ -1,0 +1,10 @@
+<?php foreach($categories as $category): ?>
+<tr>
+    <th>
+        <input type="checkbox" name="<?= $category->category ?>" />
+    </th>
+    <td>
+        <?= $category->category ?>
+    </td>
+</tr>
+<?php endforeach; ?>

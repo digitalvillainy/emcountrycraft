@@ -45,6 +45,6 @@ class Category extends Model
 
     public function deleteCategory(string $target): int
     {
-        return Db::table('rbm_stripe_categories')->delete();
+        return Db::table('rbm_stripe_categories')->where('category', '=', $target)->delete();
     }
 }

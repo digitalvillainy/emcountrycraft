@@ -4,6 +4,7 @@ namespace Rbm\Stripe\Controllers;
 
 use BackendMenu;
 use Backend\Classes\Controller;
+use Illuminate\Support\Facades\DB;
 use RBM\Stripe\Models\Category as ModelsCategory;
 
 /**
@@ -59,7 +60,6 @@ class Category extends Controller
         $this->vars['results']['status'] = $results !== 0 ? 'Successfully updated' : 'Unsuccessful Update';
     }
 
-
     /**
      * Initial function that happens upon page load in backend
      *
@@ -67,7 +67,6 @@ class Category extends Controller
     public function index(): void
     {
         $this->pageTitle = 'Product Category | From Red Banner Media, LLC';
-        $this->vars['test'] = 'test';
         $this->vars['categories'] = $this->category->getCategoryTable()->map(function ($category) {
             return $category->category;
         });
