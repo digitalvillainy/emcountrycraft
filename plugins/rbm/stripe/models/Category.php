@@ -35,16 +35,21 @@ class Category extends Model
 
     public function getCategoryTable(): Collection
     {
-        return Db::table('rbm_stripe_categories')->get();
+        return DB::table('rbm_stripe_categories')->get();
     }
 
     public function createNewCategory(string $category): int
     {
-        return Db::table('rbm_stripe_categories')->insert(['category' => $category]);
+        return DB::table('rbm_stripe_categories')->insert(['category' => $category]);
     }
 
     public function deleteCategory(string $target): int
     {
-        return Db::table('rbm_stripe_categories')->where('category', '=', $target)->delete();
+        $result = str_contains($target, '_') ? str_replace('_', ' ', $target) : $target;
+
+        return DB::table('rbm_stripe_categories')
+            ->select('category')
+            ->where('category', '=', $result)
+            ->delete();
     }
 }

@@ -1,14 +1,14 @@
 <main class="fs-4">
     <h1>Category Builder</h1>
     <p>Categories can be added and configured here.</p>
-    <form class="mb-5" data-request="onCategoryAdd" data-request-update="{mypartial: '#myDiv' }">
+    <form class="mb-5" data-request="onCategoryAdd" data-request-update="{ mypartial: '#myDiv', categorypartial: '#categoryList' }">
         <div class="d-flex flex-row justify-content-between w-25">
             <label for="category">Enter New Category:</label>
             <input type="text" id="category" name="category" />
-            <input type="submit" value="Add Category" class="bg-primary border rounded" />
+            <input type="submit" value="Add Category" class="bg-primary border rounded" id="submitBtn" />
         </div>
     </form>
-    <form data-request="onDeleteCategory" data-request-update="{categorypartial: '#myDiv' }">
+    <form data-request="onDeleteCategory" data-request-update="{ mypartial: '#myDiv', categorypartial: '#categoryList' }">
         <div class="w-50">
             <table class="table table-striped table-dark table-small">
                 <thead>
@@ -20,8 +20,7 @@
                         <th colspan="2">Name</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <!-- TODO: Find a way to replace this content after data-request is complete -->
+                <tbody id="categoryList">
                     <?php foreach ($categories as $category) : ?>
                         <tr>
                             <th>
@@ -49,5 +48,8 @@
         } else {
             inputs.forEach((input) => input.checked = false);
         }
+    });
+    $('#submitBtn').on('click', function(e) {
+        $('#category').text('');
     });
 </script>
