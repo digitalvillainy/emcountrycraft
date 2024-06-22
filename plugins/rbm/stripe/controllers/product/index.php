@@ -3,7 +3,7 @@
     <p>
         Add products here to create products for your store.
     </p>
-    <form data-request="onAddProduct" data-request-update="{mypartial: '#myDiv' }" class="w-25">
+    <form data-request="onAddProduct" data-request-update="{mypartial: '#myDiv' }" data-request-file class="w-25">
         <div class="my-3 d-flex flex-column">
             <label for="name">Name</label>
             <input id="name" type="text" name="name" maxlength="300" />
@@ -27,19 +27,20 @@
             <input id="featured" type="checkbox" name="featured" />
         </div>
         <div class="my-3 d-flex flex-column">
-            <label for="product_image">Product Image please choose up to 4</label>
-            <input id="product_image" type="file" name="product_image" multiple accept="image/*" />
+            <label for="product_images">Product Image please choose up to 4</label>
+            <input id="product_images" type="file" name="product_images[]" multiple accept="image/*" />
         </div>
-        <!--TODO: Pull from categories from plugin-->
         <div class="my-3 d-flex flex-column">
             <label for="category">Product Category</label>
             <select name="category">
                 <option value="">--Please Choose a Category</option>
+                <?php foreach ($categories->values() as $category) : ?>
+                    <option value="<?= $category->category ?>"><?= $category->category ?></option>
+                <?php endforeach ?>
             </select>
         </div>
         <input type="submit" value="Add Product" class="bg-success border rounded" />
     </form>
-    <?= $test ?>
     <!-- Results of creating product -->
     <div id="myDiv"></div>
 </main>

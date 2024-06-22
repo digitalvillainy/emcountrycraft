@@ -29,7 +29,6 @@ return new class extends Migration
                 ->references('id')
                 ->on('rbm_stripe_categories')
                 ->onDelete('cascade');
-            //TODO: Fix issues with database
             $table->timestamps();
         });
     }

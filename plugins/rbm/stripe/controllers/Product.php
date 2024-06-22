@@ -4,7 +4,8 @@ namespace Rbm\Stripe\Controllers;
 
 use BackendMenu;
 use Backend\Classes\Controller;
-use RBM\Stripe\Controllers\StripePay;
+use Input;
+use Rbm\Stripe\Models\Category;
 
 /**
  * Product Backend Controller
@@ -13,20 +14,19 @@ use RBM\Stripe\Controllers\StripePay;
  */
 class Product extends Controller
 {
-    // public $implement = [
-    //     \Backend\Behaviors\FormController::class,
-    //     \Backend\Behaviors\ListController::class,
-    // ];
+    public object $file;
+    public $implement = [
+        \Backend\Behaviors\FormController::class,
+    ];
 
     /**
      * @var string formConfig file
      */
     public $formConfig = 'config_form.yaml';
 
-    /**
-     * @var string listConfig file
-     */
-    public $listConfig = 'config_list.yaml';
+    public $attachMany = [
+        'photos' => \System\Models\File::class
+    ];
 
     /**
      * @var array required permissions
@@ -42,13 +42,15 @@ class Product extends Controller
             'featured_text' => input('featured_text'),
             'price' => input('price'),
             'stock' => input('stock'),
-            'product_image' => input('product_image'),
+            'product_image' => input('product_images'),
         ];
+
+        // TODO: remove comment later
 
         // Send to Stripe
         $this->createStripeProduct($payload);
-        // Send to local DB
 
+        // Send to local DB
         $dbPayload = array_merge(
             [
                 'featured' => input('featured'),
@@ -74,8 +76,7 @@ class Product extends Controller
     public function index(): void
     {
         $this->pageTitle = 'Product Configuration | From Red Banner Media, LLC';
-        $this->vars['form'] = '';
-        $this->vars['test'] = '';
+        $this->vars['categories'] = (new Category())->getCategoryTable()->values();
     }
 
     /**

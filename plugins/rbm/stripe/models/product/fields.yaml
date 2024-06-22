@@ -3,6 +3,25 @@
 # ===================================
 
 fields:
-    id:
-        label: ID
-        disabled: true
+    name:
+        label: Name
+        type: text
+    featured_text:
+        label: Featured Text
+        type: textarea
+    price:
+        label: Price
+        type: number
+    stock:
+        label: Stock
+        type: number
+    category:
+        label: Category
+        type: dropdown
+    featured:
+        label: Featured
+        type: checkbox
+    product_images:
+        label: Product Images
+        type: fileupload
+        mode: image

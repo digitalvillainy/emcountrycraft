@@ -6,10 +6,10 @@
 name: Product
 
 # Model Form Field configuration
-# form: $/rbm/stripe/models/product/fields.yaml
+form: $/rbm/stripe/models/product/fields.yaml
 
 # Model Class name
-# modelClass: Rbm\Stripe\Models\Product
+modelClass: Rbm\Stripe\Models\Product
 
 # Default redirect location
 defaultRedirect: rbm/stripe/product
