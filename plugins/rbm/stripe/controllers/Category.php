@@ -67,9 +67,6 @@ class Category extends Controller
     public function index(): void
     {
         $this->pageTitle = 'Product Category | From Red Banner Media, LLC';
-        // echo '<pre/>';
-        // var_dump(Db::table('rbm_stripe_categories')->select('category')->where('category', '=', 'ear warmers')->get());
-        // die();
         $this->vars['categories'] = $this->category->getCategoryTable()->map(function ($category) {
             return $category->category;
         });
