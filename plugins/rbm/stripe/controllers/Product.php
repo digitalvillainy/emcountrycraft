@@ -4,8 +4,10 @@ namespace Rbm\Stripe\Controllers;
 
 use BackendMenu;
 use Backend\Classes\Controller;
-use Input;
 use Rbm\Stripe\Models\Category;
+use Rbm\Stripe\Models\Product as ModelsProduct;
+use Rbm\Stripe\Models\ProductImages;
+use System\Models\File;
 
 /**
  * Product Backend Controller
@@ -15,6 +17,7 @@ use Rbm\Stripe\Models\Category;
 class Product extends Controller
 {
     public object $file;
+    public Category $category;
     public $implement = [
         \Backend\Behaviors\FormController::class,
     ];
@@ -24,9 +27,6 @@ class Product extends Controller
      */
     public $formConfig = 'config_form.yaml';
 
-    public $attachMany = [
-        'photos' => \System\Models\File::class
-    ];
 
     /**
      * @var array required permissions
@@ -35,6 +35,15 @@ class Product extends Controller
 
     public function onAddProduct(): void
     {
+        $file = (array) files('product_images');
+        echo '<pre/>';
+        var_dump($file);
+        die();
+        $fileUpload = new ProductImages();
+        $fileUpload->product_images = $file[0];
+        $fileUpload->save();
+
+
         //Payload for stripe information
         $payload = [
             'name' => input('name'),
@@ -45,19 +54,22 @@ class Product extends Controller
             'product_image' => input('product_images'),
         ];
 
-        // TODO: remove comment later
+        //TODO: fix product_image file
 
         // Send to Stripe
-        $this->createStripeProduct($payload);
-
+        //$this->createStripeProduct($payload);
+        $categoryId = $this->category->getCategoryIdByName(input('category'));
         // Send to local DB
         $dbPayload = array_merge(
             [
                 'featured' => input('featured'),
-                'category' => input('category')
+                'category' => $categoryId
             ],
             $payload
         );
+
+        (new ModelsProduct())->storeProduct($dbPayload);
+        //TODO: send to DB
 
         //send status update to _mypartial
         $this->vars['results']['status'] = true ? 'Successfully updated' : 'Unsuccessful Update';
@@ -76,7 +88,8 @@ class Product extends Controller
     public function index(): void
     {
         $this->pageTitle = 'Product Configuration | From Red Banner Media, LLC';
-        $this->vars['categories'] = (new Category())->getCategoryTable()->values();
+        $this->category = new Category();
+        $this->vars['categories'] = $this->category->getCategoryTable()->values();
     }
 
     /**

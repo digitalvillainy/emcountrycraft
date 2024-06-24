@@ -2,7 +2,10 @@
 
 namespace Rbm\Stripe\Models;
 
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 use Model;
+use System\Models\File;
 
 /**
  * Product Model
@@ -18,8 +21,23 @@ class Product extends Model
      */
     public $table = 'rbm_stripe_products';
 
+    // public $attachOne = [
+    //     'product_image' => File::class
+    // ];
+
     /**
      * @var array rules for validation
      */
     public $rules = [];
+
+    public function getProductsTable(): Collection
+    {
+        return DB::table('rbm_stripe_products')->get();
+    }
+
+    public function storeProduct(array $productDetails): int
+    {
+        //TODO: Check if the product exists first then either update or insert
+        return DB::table('rbm_stripe_products')->insert($productDetails);
+    }
 }

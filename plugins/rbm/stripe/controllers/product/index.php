@@ -11,7 +11,7 @@
         </div>
         <div class="my-3 d-flex flex-column">
             <label for="featured_text">Featured Text</label>
-            <textarea id="featured_text" name="feature_text" maxlength="1000"></textarea>
+            <textarea id="featured_text" name="featured_text" maxlength="1000"></textarea>
             <div id="featured_length"></div>
         </div>
         <div class="my-3 d-flex flex-column">
@@ -28,7 +28,7 @@
         </div>
         <div class="my-3 d-flex flex-column">
             <label for="product_images">Product Image please choose up to 4</label>
-            <input id="product_images" type="file" name="product_images[]" multiple accept="image/*" />
+            <input id="product_images" type="file" name="product_images" accept="image/*" />
         </div>
         <div class="my-3 d-flex flex-column">
             <label for="category">Product Category</label>

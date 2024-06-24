@@ -43,6 +43,22 @@ class Category extends Model
         return DB::table('rbm_stripe_categories')->insert(['category' => $category]);
     }
 
+    public function getCategoryIdByName(string $target): int
+    {
+        $categories = array_filter(
+            $this->getCategoryTable()->values()->all(),
+            function (object $category) use ($target) {
+                return $category->category === $target;
+            }
+        );
+
+        if (empty($categories)) {
+            throw new \Exception('Category id not found');
+        }
+
+        return reset($categories)->id;
+    }
+
     public function deleteCategory(string $target): int
     {
         $result = str_contains($target, '_') ? str_replace('_', ' ', $target) : $target;

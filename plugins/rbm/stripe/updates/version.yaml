@@ -21,3 +21,9 @@ v1.0.7:
     - new tables to be added
     - create_categories_table.php
     - create_products_table.php
+v1.0.8:
+    - Working on uploading product image
+    - create_product_images_table.php
+v1.0.8.5:
+    - Made field nullable
+    - create_product_images_table.php

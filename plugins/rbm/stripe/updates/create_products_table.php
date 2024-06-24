@@ -24,8 +24,8 @@ return new class extends Migration
             $table->text('featured_text');
             $table->tinyInteger('price');
             $table->tinyInteger('stock');
-            $table->index('category_id');
-            $table->foreign('category_id')
+            $table->foreignId('category_id')
+                ->index()
                 ->references('id')
                 ->on('rbm_stripe_categories')
                 ->onDelete('cascade');
