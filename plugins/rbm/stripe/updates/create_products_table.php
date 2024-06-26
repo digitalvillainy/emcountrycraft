@@ -20,8 +20,8 @@ return new class extends Migration
     {
         Schema::create('rbm_stripe_products', function (Blueprint $table) {
             $table->id();
-            $table->text('name');
-            $table->text('featured_text');
+            $table->text('name')->nullable();
+            $table->text('featured_text')->nullable();
             $table->tinyInteger('price');
             $table->tinyInteger('stock');
             $table->foreignId('category_id')

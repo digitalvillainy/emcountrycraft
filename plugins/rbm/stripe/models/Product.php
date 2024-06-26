@@ -21,9 +21,9 @@ class Product extends Model
      */
     public $table = 'rbm_stripe_products';
 
-    // public $attachOne = [
-    //     'product_image' => File::class
-    // ];
+    public $attachMany = [
+        'product_images' => File::class
+    ];
 
     /**
      * @var array rules for validation

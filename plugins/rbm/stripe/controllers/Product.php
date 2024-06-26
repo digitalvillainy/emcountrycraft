@@ -4,6 +4,8 @@ namespace Rbm\Stripe\Controllers;
 
 use BackendMenu;
 use Backend\Classes\Controller;
+use Illuminate\Http\UploadedFile;
+use October\Rain\Support\Facades\Input;
 use Rbm\Stripe\Models\Category;
 use Rbm\Stripe\Models\Product as ModelsProduct;
 use Rbm\Stripe\Models\ProductImages;
@@ -27,7 +29,6 @@ class Product extends Controller
      */
     public $formConfig = 'config_form.yaml';
 
-
     /**
      * @var array required permissions
      */
@@ -35,15 +36,6 @@ class Product extends Controller
 
     public function onAddProduct(): void
     {
-        $file = (array) files('product_images');
-        echo '<pre/>';
-        var_dump($file);
-        die();
-        $fileUpload = new ProductImages();
-        $fileUpload->product_images = $file[0];
-        $fileUpload->save();
-
-
         //Payload for stripe information
         $payload = [
             'name' => input('name'),
@@ -54,7 +46,6 @@ class Product extends Controller
             'product_image' => input('product_images'),
         ];
 
-        //TODO: fix product_image file
 
         // Send to Stripe
         //$this->createStripeProduct($payload);
@@ -67,6 +58,14 @@ class Product extends Controller
             ],
             $payload
         );
+
+        $model = new ModelsProduct;
+        $model->product_images = input('product_images');
+        $model->save();
+
+        echo '<pre/>';
+        var_dump($model);
+        die();
 
         (new ModelsProduct())->storeProduct($dbPayload);
         //TODO: send to DB
@@ -87,6 +86,7 @@ class Product extends Controller
      */
     public function index(): void
     {
+        $this->initForm(new ModelsProduct());
         $this->pageTitle = 'Product Configuration | From Red Banner Media, LLC';
         $this->category = new Category();
         $this->vars['categories'] = $this->category->getCategoryTable()->values();

@@ -4,6 +4,7 @@
         Add products here to create products for your store.
     </p>
     <form data-request="onAddProduct" data-request-update="{mypartial: '#myDiv' }" data-request-file class="w-25">
+        <?= Form::token() ?>
         <div class="my-3 d-flex flex-column">
             <label for="name">Name</label>
             <input id="name" type="text" name="name" maxlength="300" />
@@ -28,7 +29,7 @@
         </div>
         <div class="my-3 d-flex flex-column">
             <label for="product_images">Product Image please choose up to 4</label>
-            <input id="product_images" type="file" name="product_images" accept="image/*" />
+            <input id="product_images" type="file" name="product_images[]" accept="image/*" multiple />
         </div>
         <div class="my-3 d-flex flex-column">
             <label for="category">Product Category</label>
@@ -41,6 +42,7 @@
         </div>
         <input type="submit" value="Add Product" class="bg-success border rounded" />
     </form>
+
     <!-- Results of creating product -->
     <div id="myDiv"></div>
 </main>
